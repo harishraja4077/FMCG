@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Dashboard - Stackly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="dashboard-layout">
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="logo"><div class="logo-icon"><img src="images/logo.webp" alt="Stackly"></div></a>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Main</div>
+        <a href="userdashboard.html" class="sidebar-link active"><span class="icon"><i class="fas fa-th-large"></i></span> Dashboard</a>
+        <a href="userorders.html" class="sidebar-link"><span class="icon"><i class="fas fa-shopping-bag"></i></span> My Orders <span class="badge">12</span></a>
+        <a href="userfavorites.html" class="sidebar-link"><span class="icon"><i class="fas fa-heart"></i></span> Favorites</a>
+        <a href="userwallet.html" class="sidebar-link"><span class="icon"><i class="fas fa-wallet"></i></span> Wallet</a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Shop</div>
+        <a href="product.html" class="sidebar-link"><span class="icon"><i class="fas fa-store"></i></span> Browse Products</a>
+        <a href="usersubscriptions.html" class="sidebar-link"><span class="icon"><i class="fas fa-sync-alt"></i></span> Subscriptions</a>
+        <a href="userdelivery.html" class="sidebar-link"><span class="icon"><i class="fas fa-truck"></i></span> Delivery Tracking</a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Support</div>
+        <a href="contact.html" class="sidebar-link"><span class="icon"><i class="fas fa-headset"></i></span> Help Center</a>
+        <a href="userreport.html" class="sidebar-link"><span class="icon"><i class="fas fa-flag"></i></span> Report Issue</a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Account</div>
+        <a href="usersettings.html" class="sidebar-link"><span class="icon"><i class="fas fa-cog"></i></span> Settings</a>
+        <a href="signin.html" class="sidebar-link" onclick="localStorage.clear()"><span class="icon"><i class="fas fa-sign-out-alt"></i></span> Logout</a>
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar"><img src="https://ui-avatars.com/api/?name=U&background=0d6e3f&color=fff&bold=true" alt="User"></div>
+        <div class="sidebar-user-info">
+          <h4 id="sidebarUserName">User</h4>
+          <p id="sidebarUserRole">Customer</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="dashboard-main">
+    <!-- Topbar -->
+    <div class="dashboard-topbar">
+      <div class="dashboard-topbar-left">
+        <button class="sidebar-toggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+        <div>
+          <h1>Welcome back, <span id="topbarGreeting"></span></h1>
+          <p>Here's what's happening with your orders today</p>
+        </div>
+      </div>
+      <div class="dashboard-topbar-right">
+        <div class="topbar-search"><input type="text" placeholder="Search products, orders..."><i class="fas fa-search icon"></i></div>
+        <button class="topbar-icon-btn"><i class="fas fa-bell"></i><span class="notif-dot"></span></button>
+        <div class="topbar-email"><i class="fas fa-envelope"></i><span class="email-text" id="topbarEmail">user@example.com</span></div>
+      </div>
+    </div>
+
+    <!-- Stat Cards -->
+    <div class="dashboard-stats">
+      <div class="dash-stat-card">
+        <div class="dash-stat-icon green"><i class="fas fa-shopping-bag"></i></div>
+        <div class="dash-stat-info"><h3>24</h3><p>Total Orders</p><span class="trend up"><i class="fas fa-arrow-up"></i> 12%</span></div>
+      </div>
+      <div class="dash-stat-card">
+        <div class="dash-stat-icon orange"><i class="fas fa-truck"></i></div>
+        <div class="dash-stat-info"><h3>5</h3><p>Active Deliveries</p><span class="trend up"><i class="fas fa-arrow-up"></i> 3 new</span></div>
+      </div>
+      <div class="dash-stat-card">
+        <div class="dash-stat-icon blue"><i class="fas fa-indian-rupee-sign"></i></div>
+        <div class="dash-stat-info"><h3>&#8377;48,520</h3><p>Total Spent</p><span class="trend down"><i class="fas fa-arrow-down"></i> 5%</span></div>
+      </div>
+      <div class="dash-stat-card">
+        <div class="dash-stat-icon purple"><i class="fas fa-star"></i></div>
+        <div class="dash-stat-info"><h3>156</h3><p>Points Earned</p><span class="trend up"><i class="fas fa-arrow-up"></i> 28 pts</span></div>
+      </div>
+    </div>
+
+    <!-- Chart + Quick Actions -->
+    <div class="dashboard-grid">
+      <div class="dash-card">
+        <div class="dash-card-header"><h3>Order History</h3><a href="404.html" class="btn btn-outline dash-btn-sm">View All</a></div>
+        <div class="dash-card-body">
+          <div class="chart-placeholder">
+            <div class="chart-bars">
+              <div class="chart-bar" data-h="60" style="background:var(--gradient-primary);"><span class="tooltip">Jan: &#8377;4,200</span></div>
+              <div class="chart-bar" data-h="80" style="background:var(--gradient-primary);"><span class="tooltip">Feb: &#8377;5,800</span></div>
+              <div class="chart-bar" data-h="45" style="background:var(--gradient-primary);"><span class="tooltip">Mar: &#8377;3,100</span></div>
+              <div class="chart-bar" data-h="90" style="background:var(--gradient-primary);"><span class="tooltip">Apr: &#8377;6,500</span></div>
+              <div class="chart-bar" data-h="70" style="background:var(--gradient-primary);"><span class="tooltip">May: &#8377;5,100</span></div>
+              <div class="chart-bar" data-h="55" style="background:var(--gradient-primary);"><span class="tooltip">Jun: &#8377;3,900</span></div>
+              <div class="chart-bar" data-h="85" style="background:var(--gradient-primary);"><span class="tooltip">Jul: &#8377;6,100</span></div>
+              <div class="chart-bar" data-h="95" style="background:var(--gradient-primary);"><span class="tooltip">Aug: &#8377;7,200</span></div>
+              <div class="chart-bar" data-h="65" style="background:var(--gradient-primary);"><span class="tooltip">Sep: &#8377;4,700</span></div>
+              <div class="chart-bar" data-h="75" style="background:var(--gradient-primary);"><span class="tooltip">Oct: &#8377;5,500</span></div>
+              <div class="chart-bar" data-h="50" style="background:var(--gradient-primary);"><span class="tooltip">Nov: &#8377;3,600</span></div>
+              <div class="chart-bar" data-h="88" style="background:var(--gradient-primary);"><span class="tooltip">Dec: &#8377;6,400</span></div>
+            </div>
+            <div class="chart-labels"><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-card-header"><h3>Quick Actions</h3></div>
+        <div class="dash-card-body">
+          <div class="quick-actions">
+            <a href="product.html" class="quick-action-btn"><div class="icon green"><i class="fas fa-shopping-cart"></i></div><h4>New Order</h4></a>
+            <a href="userdashboard.html" class="quick-action-btn"><div class="icon orange"><i class="fas fa-sync-alt"></i></div><h4>Reorder</h4></a>
+            <a href="userdashboard.html" class="quick-action-btn"><div class="icon blue"><i class="fas fa-map-marker-alt"></i></div><h4>Track Order</h4></a>
+            <a href="contact.html" class="quick-action-btn"><div class="icon purple"><i class="fas fa-headset"></i></div><h4>Get Support</h4></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Orders Table -->
+    <div class="dashboard-section-label"><i class="fas fa-receipt"></i> Recent Orders</div>
+    <div class="dash-card dash-card-table">
+      <div class="dash-card-header"><h3>Order History</h3><a href="404.html" class="btn btn-outline dash-btn-sm">Export CSV</a></div>
+      <div class="dash-card-body dash-card-body-table">
+        <table class="dash-table">
+          <thead><tr><th>Order ID</th><th>Products</th><th>Date</th><th>Amount</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td><strong>#ORD-7842</strong></td><td>Mixed FMCG Bundle (8 items)</td><td>Dec 18, 2025</td><td>&#8377;3,450</td><td><span class="status-badge success"><span class="dot"></span>Delivered</span></td></tr>
+            <tr><td><strong>#ORD-7839</strong></td><td>Personal Care Kit (5 items)</td><td>Dec 15, 2025</td><td>&#8377;1,890</td><td><span class="status-badge info"><span class="dot"></span>In Transit</span></td></tr>
+            <tr><td><strong>#ORD-7830</strong></td><td>Snacks & Beverages Pack (12 items)</td><td>Dec 10, 2025</td><td>&#8377;5,230</td><td><span class="status-badge success"><span class="dot"></span>Delivered</span></td></tr>
+            <tr><td><strong>#ORD-7815</strong></td><td>Household Essentials (6 items)</td><td>Dec 05, 2025</td><td>&#8377;2,780</td><td><span class="status-badge warning"><span class="dot"></span>Processing</span></td></tr>
+            <tr><td><strong>#ORD-7801</strong></td><td>Health & Wellness Combo (4 items)</td><td>Dec 01, 2025</td><td>&#8377;1,650</td><td><span class="status-badge success"><span class="dot"></span>Delivered</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Activity + Wallet -->
+    <div class="dashboard-grid" style="margin-top:32px;">
+      <div class="dash-card">
+        <div class="dash-card-header"><h3>Recent Activity</h3></div>
+        <div class="dash-card-body">
+          <div class="activity-list">
+            <div class="activity-item"><div class="activity-icon green"><i class="fas fa-check-circle"></i></div><div class="activity-text"><h4>Order #ORD-7842 Delivered</h4><p>Mixed FMCG Bundle delivered successfully</p></div><span class="activity-time">2 hrs ago</span></div>
+            <div class="activity-item"><div class="activity-icon orange"><i class="fas fa-truck"></i></div><div class="activity-text"><h4>Order #ORD-7839 Shipped</h4><p>Personal Care Kit is on the way</p></div><span class="activity-time">5 hrs ago</span></div>
+            <div class="activity-item"><div class="activity-icon blue"><i class="fas fa-wallet"></i></div><div class="activity-text"><h4>Payment Processed</h4><p>&#8377;3,450 deducted from wallet</p></div><span class="activity-time">1 day ago</span></div>
+            <div class="activity-item"><div class="activity-icon purple"><i class="fas fa-star"></i></div><div class="activity-text"><h4>Points Earned</h4><p>34 points for your recent order</p></div><span class="activity-time">1 day ago</span></div>
+            <div class="activity-item"><div class="activity-icon red"><i class="fas fa-tag"></i></div><div class="activity-text"><h4>Promo Code Applied</h4><p>STACK20 — 20% off next order</p></div><span class="activity-time">2 days ago</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="dash-card dash-widget-gradient">
+        <div class="dash-card-header dash-card-header-dark"><h3><i class="fas fa-wallet" style="color:var(--accent);margin-right:8px;"></i>Wallet</h3></div>
+        <div class="dash-card-body">
+          <div class="wallet-balance"><span class="wallet-label">Available Balance</span><span class="wallet-amount">&#8377;12,450</span></div>
+          <div class="wallet-budget">
+            <div class="wallet-budget-row"><span>Monthly Budget</span><span style="color:var(--accent);font-weight:600;">78%</span></div>
+            <div class="dash-progress"><div class="dash-progress-bar" style="width:78%;"></div></div>
+          </div>
+          <div class="wallet-actions">
+            <a href="userdashboard.html" class="wallet-btn"><i class="fas fa-plus"></i><span>Add Funds</span></a>
+            <a href="userdashboard.html" class="wallet-btn wallet-btn-ghost"><i class="fas fa-history"></i><span>History</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="script.js"></script>
+<script>
+  const email = localStorage.getItem('userEmail') || 'user@example.com';
+  const role = localStorage.getItem('userRole') || 'user';
+  const name = email.split('@')[0];
+  document.getElementById('topbarEmail').textContent = email;
+  document.getElementById('topbarGreeting').textContent = name.charAt(0).toUpperCase() + name.slice(1);
+  document.getElementById('sidebarUserName').textContent = name.charAt(0).toUpperCase() + name.slice(1);
+
+  function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('sidebarOverlay').classList.toggle('active'); document.body.style.overflow = document.getElementById('sidebar').classList.contains('open') ? 'hidden' : ''; }
+  function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('sidebarOverlay').classList.remove('active'); document.body.style.overflow = ''; }
+
+  document.querySelectorAll('.chart-bar[data-h]').forEach(b => { b.style.height = b.dataset.h + '%'; });
+
+  if (!localStorage.getItem('userEmail')) window.location.href = 'signin.html';
+</script>
+</body>
+</html>

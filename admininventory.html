@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory - Stackly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="dashboard-layout">
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="logo"><div class="logo-icon"><img src="images/logo.webp" alt="Stackly"></div></a>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Main</div>
+        <a href="admindashboard.html" class="sidebar-link"><span class="icon"><i class="fas fa-th-large"></i></span> Dashboard</a>
+        <a href="adminanalytics.html" class="sidebar-link"><span class="icon"><i class="fas fa-chart-line"></i></span> Analytics</a>
+        <a href="adminorders.html" class="sidebar-link"><span class="icon"><i class="fas fa-shopping-cart"></i></span> Orders <span class="badge">48</span></a>
+        <a href="adminusers.html" class="sidebar-link"><span class="icon"><i class="fas fa-users"></i></span> Users <span class="badge">1.2k</span></a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Management</div>
+        <a href="product.html" class="sidebar-link"><span class="icon"><i class="fas fa-box"></i></span> Products</a>
+        <a href="admininventory.html" class="sidebar-link active"><span class="icon"><i class="fas fa-warehouse"></i></span> Inventory</a>
+        <a href="adminshipments.html" class="sidebar-link"><span class="icon"><i class="fas fa-truck"></i></span> Shipments</a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Finance</div>
+        <a href="adminrevenue.html" class="sidebar-link"><span class="icon"><i class="fas fa-indian-rupee-sign"></i></span> Revenue</a>
+        <a href="adminpayments.html" class="sidebar-link"><span class="icon"><i class="fas fa-credit-card"></i></span> Payments</a>
+        <a href="admininvoices.html" class="sidebar-link"><span class="icon"><i class="fas fa-file-invoice"></i></span> Invoices</a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Settings</div>
+        <a href="admingeneral.html" class="sidebar-link"><span class="icon"><i class="fas fa-cog"></i></span> General</a>
+        <a href="adminnotifications.html" class="sidebar-link"><span class="icon"><i class="fas fa-bell"></i></span> Notifications</a>
+        <a href="signin.html" class="sidebar-link" onclick="localStorage.clear()"><span class="icon"><i class="fas fa-sign-out-alt"></i></span> Logout</a>
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar"><img src="https://ui-avatars.com/api/?name=A&background=ff6b00&color=fff&bold=true" alt="Admin"></div>
+        <div class="sidebar-user-info">
+          <h4 id="sidebarUserName">Admin</h4>
+          <p id="sidebarUserRole">Administrator</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="dashboard-main">
+    <!-- Topbar -->
+    <div class="dashboard-topbar">
+      <div class="dashboard-topbar-left">
+        <button class="sidebar-toggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+        <div>
+          <h1>Admin Panel <span id="topbarGreeting"></span></h1>
+          <p>Track and manage product inventory</p>
+        </div>
+      </div>
+      <div class="dashboard-topbar-right">
+        <div class="topbar-search"><input type="text" placeholder="Search users, products..."><i class="fas fa-search icon"></i></div>
+        <button class="topbar-icon-btn"><i class="fas fa-bell"></i><span class="notif-dot"></span></button>
+        <div class="topbar-email"><i class="fas fa-shield-halved"></i><span class="email-text" id="topbarEmail">admin@example.com</span></div>
+      </div>
+    </div>
+
+    <!-- Stat Cards -->
+    <div class="dashboard-stats">
+      <div class="dash-stat-card">
+        <div class="dash-stat-icon green"><i class="fas fa-box"></i></div>
+        <div class="dash-stat-info"><h3>2,530</h3><p>Total Products</p><span class="trend up"><i class="fas fa-arrow-up"></i> 42 new</span></div>
+      </div>
+      <div class="dash-stat-card">
+        <div class="dash-stat-icon orange"><i class="fas fa-exclamation-triangle"></i></div>
+        <div class="dash-stat-info"><h3>18</h3><p>Low Stock Items</p><span class="trend down"><i class="fas fa-arrow-down"></i> 5%</span></div>
+      </div>
+      <div class="dash-stat-card">
+        <div class="dash-stat-icon blue"><i class="fas fa-warehouse"></i></div>
+        <div class="dash-stat-info"><h3>4</h3><p>Warehouses</p><span class="trend up"><i class="fas fa-arrow-up"></i> 1 new</span></div>
+      </div>
+      <div class="dash-stat-card">
+        <div class="dash-stat-icon gold"><i class="fas fa-rotate"></i></div>
+        <div class="dash-stat-info"><h3>94.2%</h3><p>Stock Accuracy</p><span class="trend up"><i class="fas fa-arrow-up"></i> 1.2%</span></div>
+      </div>
+    </div>
+
+    <!-- Inventory Table -->
+    <div class="dashboard-section-label"><i class="fas fa-clipboard-list"></i> Inventory Management</div>
+    <div class="dash-card dash-card-table">
+      <div class="dash-card-header"><h3>Product Stock Levels</h3><a href="404.html" class="btn btn-outline dash-btn-sm">Export CSV</a></div>
+      <div class="dash-card-body dash-card-body-table">
+        <table class="dash-table">
+          <thead><tr><th>Product</th><th>SKU</th><th>Stock</th><th>Reserved</th><th>Available</th><th>Warehouse</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Amul Butter 500g</strong></td><td>SKU-001</td><td>320</td><td>45</td><td>275</td><td>Salem</td><td><span class="status-badge success"><span class="dot"></span>In Stock</span></td></tr>
+            <tr><td><strong>Maggi Noodles 70g (Pack of 12)</strong></td><td>SKU-002</td><td>48</td><td>12</td><td>36</td><td>Coimbatore</td><td><span class="status-badge warning"><span class="dot"></span>Low Stock</span></td></tr>
+            <tr><td><strong>Surf Excel 1kg</strong></td><td>SKU-003</td><td>650</td><td>80</td><td>570</td><td>Salem</td><td><span class="status-badge success"><span class="dot"></span>In Stock</span></td></tr>
+            <tr><td><strong>Colgate MaxFresh 150g</strong></td><td>SKU-004</td><td>12</td><td>8</td><td>4</td><td>Bangalore</td><td><span class="status-badge danger"><span class="dot"></span>Critical</span></td></tr>
+            <tr><td><strong>Parle-G Biscuit 80g</strong></td><td>SKU-005</td><td>1,200</td><td>150</td><td>1,050</td><td>Salem</td><td><span class="status-badge success"><span class="dot"></span>In Stock</span></td></tr>
+            <tr><td><strong>Marico Hair Oil 400ml</strong></td><td>SKU-006</td><td>35</td><td>18</td><td>17</td><td>Chennai</td><td><span class="status-badge warning"><span class="dot"></span>Low Stock</span></td></tr>
+            <tr><td><strong>HUL Lifebuoy Soap (Pack of 6)</strong></td><td>SKU-007</td><td>890</td><td>65</td><td>825</td><td>Coimbatore</td><td><span class="status-badge success"><span class="dot"></span>In Stock</span></td></tr>
+            <tr><td><strong>Britannia Good Day 250g</strong></td><td>SKU-008</td><td>22</td><td>10</td><td>12</td><td>Bangalore</td><td><span class="status-badge warning"><span class="dot"></span>Low Stock</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Warehouse Stock + Alerts -->
+    <div class="dashboard-grid" style="margin-top:32px;">
+      <div class="dash-card">
+        <div class="dash-card-header"><h3>Warehouse Stock Distribution</h3></div>
+        <div class="dash-card-body">
+          <div class="chart-placeholder">
+            <div class="chart-bars">
+              <div class="chart-bar" data-h="85" style="background:linear-gradient(180deg,var(--secondary),#ff8533);"><span class="tooltip">Salem: 1,840 units</span></div>
+              <div class="chart-bar" data-h="65" style="background:linear-gradient(180deg,var(--secondary),#ff8533);"><span class="tooltip">Coimbatore: 1,120 units</span></div>
+              <div class="chart-bar" data-h="40" style="background:linear-gradient(180deg,var(--secondary),#ff8533);"><span class="tooltip">Bangalore: 680 units</span></div>
+              <div class="chart-bar" data-h="50" style="background:linear-gradient(180deg,var(--secondary),#ff8533);"><span class="tooltip">Chennai: 890 units</span></div>
+            </div>
+            <div class="chart-labels"><span>Salem</span><span>Coimbatore</span><span>Bangalore</span><span>Chennai</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-card-header"><h3>Low Stock Alerts</h3></div>
+        <div class="dash-card-body">
+          <div class="activity-list">
+            <div class="activity-item"><div class="activity-icon red"><i class="fas fa-exclamation-circle"></i></div><div class="activity-text"><h4>Colgate MaxFresh 150g</h4><p>4 units remaining — reorder immediately</p></div><span class="activity-time">Critical</span></div>
+            <div class="activity-item"><div class="activity-icon orange"><i class="fas fa-exclamation-triangle"></i></div><div class="activity-text"><h4>Marico Hair Oil 400ml</h4><p>17 units remaining — below threshold</p></div><span class="activity-time">Low</span></div>
+            <div class="activity-item"><div class="activity-icon orange"><i class="fas fa-exclamation-triangle"></i></div><div class="activity-text"><h4>Britannia Good Day 250g</h4><p>12 units remaining — below threshold</p></div><span class="activity-time">Low</span></div>
+            <div class="activity-item"><div class="activity-icon orange"><i class="fas fa-exclamation-triangle"></i></div><div class="activity-text"><h4>Maggi Noodles 70g</h4><p>36 units available — restock soon</p></div><span class="activity-time">Low</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="script.js"></script>
+<script>
+  const email = localStorage.getItem('userEmail') || 'admin@example.com';
+  const name = email.split('@')[0];
+  document.getElementById('topbarEmail').textContent = email;
+  document.getElementById('topbarGreeting').textContent = name.charAt(0).toUpperCase() + name.slice(1);
+  document.getElementById('sidebarUserName').textContent = name.charAt(0).toUpperCase() + name.slice(1);
+
+  function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('sidebarOverlay').classList.toggle('active'); document.body.style.overflow = document.getElementById('sidebar').classList.contains('open') ? 'hidden' : ''; }
+  function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('sidebarOverlay').classList.remove('active'); document.body.style.overflow = ''; }
+
+  document.querySelectorAll('.chart-bar[data-h]').forEach(b => { b.style.height = b.dataset.h + '%'; });
+
+  if (!localStorage.getItem('userEmail')) window.location.href = 'signin.html';
+</script>
+</body>
+</html>

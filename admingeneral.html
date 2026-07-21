@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>General Settings - Stackly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="dashboard-layout">
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="logo"><div class="logo-icon"><img src="images/logo.webp" alt="Stackly"></div></a>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Main</div>
+        <a href="admindashboard.html" class="sidebar-link"><span class="icon"><i class="fas fa-th-large"></i></span> Dashboard</a>
+        <a href="adminanalytics.html" class="sidebar-link"><span class="icon"><i class="fas fa-chart-line"></i></span> Analytics</a>
+        <a href="adminorders.html" class="sidebar-link"><span class="icon"><i class="fas fa-shopping-cart"></i></span> Orders <span class="badge">48</span></a>
+        <a href="adminusers.html" class="sidebar-link"><span class="icon"><i class="fas fa-users"></i></span> Users <span class="badge">1.2k</span></a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Management</div>
+        <a href="product.html" class="sidebar-link"><span class="icon"><i class="fas fa-box"></i></span> Products</a>
+        <a href="admininventory.html" class="sidebar-link"><span class="icon"><i class="fas fa-warehouse"></i></span> Inventory</a>
+        <a href="adminshipments.html" class="sidebar-link"><span class="icon"><i class="fas fa-truck"></i></span> Shipments</a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Finance</div>
+        <a href="adminrevenue.html" class="sidebar-link"><span class="icon"><i class="fas fa-indian-rupee-sign"></i></span> Revenue</a>
+        <a href="adminpayments.html" class="sidebar-link"><span class="icon"><i class="fas fa-credit-card"></i></span> Payments</a>
+        <a href="admininvoices.html" class="sidebar-link"><span class="icon"><i class="fas fa-file-invoice"></i></span> Invoices</a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Settings</div>
+        <a href="admingeneral.html" class="sidebar-link active"><span class="icon"><i class="fas fa-cog"></i></span> General</a>
+        <a href="adminnotifications.html" class="sidebar-link"><span class="icon"><i class="fas fa-bell"></i></span> Notifications</a>
+        <a href="signin.html" class="sidebar-link" onclick="localStorage.clear()"><span class="icon"><i class="fas fa-sign-out-alt"></i></span> Logout</a>
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar"><img src="https://ui-avatars.com/api/?name=A&background=ff6b00&color=fff&bold=true" alt="Admin"></div>
+        <div class="sidebar-user-info">
+          <h4 id="sidebarUserName">Admin</h4>
+          <p id="sidebarUserRole">Administrator</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="dashboard-main">
+    <!-- Topbar -->
+    <div class="dashboard-topbar">
+      <div class="dashboard-topbar-left">
+        <button class="sidebar-toggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+        <div>
+          <h1>Admin Panel <span id="topbarGreeting"></span></h1>
+          <p>Manage your platform settings</p>
+        </div>
+      </div>
+      <div class="dashboard-topbar-right">
+        <div class="topbar-search"><input type="text" placeholder="Search users, products..."><i class="fas fa-search icon"></i></div>
+        <button class="topbar-icon-btn"><i class="fas fa-bell"></i><span class="notif-dot"></span></button>
+        <div class="topbar-email"><i class="fas fa-shield-halved"></i><span class="email-text" id="topbarEmail">admin@example.com</span></div>
+      </div>
+    </div>
+
+    <!-- General Settings Form -->
+    <div class="dashboard-section-label"><i class="fas fa-cog"></i> General Settings</div>
+    <div class="dash-card">
+      <div class="dash-card-header"><h3>Site Information</h3><a href="404.html" class="btn btn-outline dash-btn-sm">Save Changes</a></div>
+      <div class="dash-card-body">
+        <div class="activity-list">
+          <div class="activity-item"><div class="activity-icon blue"><i class="fas fa-store"></i></div><div class="activity-text"><h4>Site Name</h4><p>Stackly — FMCG Wholesale Platform</p></div><span class="activity-time">Active</span></div>
+          <div class="activity-item"><div class="activity-icon green"><i class="fas fa-globe"></i></div><div class="activity-text"><h4>Website URL</h4><p>https://stackly.in</p></div><span class="activity-time">Live</span></div>
+          <div class="activity-item"><div class="activity-icon orange"><i class="fas fa-envelope"></i></div><div class="activity-text"><h4>Support Email</h4><p>support@stackly.in</p></div><span class="activity-time">Active</span></div>
+          <div class="activity-item"><div class="activity-icon purple"><i class="fas fa-phone"></i></div><div class="activity-text"><h4>Support Phone</h4><p>+91 98765 43210</p></div><span class="activity-time">Active</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Settings Grid -->
+    <div class="dashboard-grid" style="margin-top:32px;">
+      <div class="dash-card">
+        <div class="dash-card-header"><h3>Regional Settings</h3></div>
+        <div class="dash-card-body">
+          <div class="activity-list">
+            <div class="activity-item"><div class="activity-icon blue"><i class="fas fa-clock"></i></div><div class="activity-text"><h4>Timezone</h4><p>Asia/Kolkata (IST, UTC+5:30)</p></div><span class="activity-time">Set</span></div>
+            <div class="activity-item"><div class="activity-icon green"><i class="fas fa-indian-rupee-sign"></i></div><div class="activity-text"><h4>Currency</h4><p>INR (₹) — Indian Rupee</p></div><span class="activity-time">Set</span></div>
+            <div class="activity-item"><div class="activity-icon orange"><i class="fas fa-language"></i></div><div class="activity-text"><h4>Language</h4><p>English (Default), Hindi, Tamil</p></div><span class="activity-time">3 langs</span></div>
+            <div class="activity-item"><div class="activity-icon purple"><i class="fas fa-map-marker-alt"></i></div><div class="activity-text"><h4>Default Warehouse</h4><p>Salem, Tamil Nadu</p></div><span class="activity-time">Set</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-card-header"><h3>Platform Configuration</h3></div>
+        <div class="dash-card-body">
+          <div class="activity-list">
+            <div class="activity-item"><div class="activity-icon green"><i class="fas fa-toggle-on"></i></div><div class="activity-text"><h4>Maintenance Mode</h4><p>Platform is live and running</p></div><span class="activity-time">Off</span></div>
+            <div class="activity-item"><div class="activity-icon green"><i class="fas fa-toggle-on"></i></div><div class="activity-text"><h4>User Registration</h4><p>New users can register</p></div><span class="activity-time">On</span></div>
+            <div class="activity-item"><div class="activity-icon green"><i class="fas fa-toggle-on"></i></div><div class="activity-text"><h4>Auto Inventory Update</h4><p>Stock updates after each order</p></div><span class="activity-time">On</span></div>
+            <div class="activity-item"><div class="activity-icon orange"><i class="fas fa-toggle-off"></i></div><div class="activity-text"><h4>Debug Mode</h4><p>Error logging for developers</p></div><span class="activity-time">Off</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="script.js"></script>
+<script>
+  const email = localStorage.getItem('userEmail') || 'admin@example.com';
+  const name = email.split('@')[0];
+  document.getElementById('topbarEmail').textContent = email;
+  document.getElementById('topbarGreeting').textContent = name.charAt(0).toUpperCase() + name.slice(1);
+  document.getElementById('sidebarUserName').textContent = name.charAt(0).toUpperCase() + name.slice(1);
+
+  function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('sidebarOverlay').classList.toggle('active'); document.body.style.overflow = document.getElementById('sidebar').classList.contains('open') ? 'hidden' : ''; }
+  function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('sidebarOverlay').classList.remove('active'); document.body.style.overflow = ''; }
+
+  document.querySelectorAll('.chart-bar[data-h]').forEach(b => { b.style.height = b.dataset.h + '%'; });
+
+  if (!localStorage.getItem('userEmail')) window.location.href = 'signin.html';
+</script>
+</body>
+</html>

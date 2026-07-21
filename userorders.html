@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Orders - Stackly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="dashboard-layout">
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="logo"><div class="logo-icon"><img src="images/logo.webp" alt="Stackly"></div></a>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Main</div>
+        <a href="userdashboard.html" class="sidebar-link"><span class="icon"><i class="fas fa-th-large"></i></span> Dashboard</a>
+        <a href="userorders.html" class="sidebar-link active"><span class="icon"><i class="fas fa-shopping-bag"></i></span> My Orders <span class="badge">12</span></a>
+        <a href="userfavorites.html" class="sidebar-link"><span class="icon"><i class="fas fa-heart"></i></span> Favorites</a>
+        <a href="userwallet.html" class="sidebar-link"><span class="icon"><i class="fas fa-wallet"></i></span> Wallet</a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Shop</div>
+        <a href="product.html" class="sidebar-link"><span class="icon"><i class="fas fa-store"></i></span> Browse Products</a>
+        <a href="usersubscriptions.html" class="sidebar-link"><span class="icon"><i class="fas fa-sync-alt"></i></span> Subscriptions</a>
+        <a href="userdelivery.html" class="sidebar-link"><span class="icon"><i class="fas fa-truck"></i></span> Delivery Tracking</a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Support</div>
+        <a href="contact.html" class="sidebar-link"><span class="icon"><i class="fas fa-headset"></i></span> Help Center</a>
+        <a href="userreport.html" class="sidebar-link"><span class="icon"><i class="fas fa-flag"></i></span> Report Issue</a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Account</div>
+        <a href="usersettings.html" class="sidebar-link"><span class="icon"><i class="fas fa-cog"></i></span> Settings</a>
+        <a href="signin.html" class="sidebar-link" onclick="localStorage.clear()"><span class="icon"><i class="fas fa-sign-out-alt"></i></span> Logout</a>
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar"><img src="https://ui-avatars.com/api/?name=U&background=0d6e3f&color=fff&bold=true" alt="User"></div>
+        <div class="sidebar-user-info">
+          <h4 id="sidebarUserName">User</h4>
+          <p id="sidebarUserRole">Customer</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="dashboard-main">
+    <!-- Topbar -->
+    <div class="dashboard-topbar">
+      <div class="dashboard-topbar-left">
+        <button class="sidebar-toggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+        <div>
+          <h1>Welcome back, <span id="topbarGreeting"></span></h1>
+          <p>Manage and track all your orders in one place</p>
+        </div>
+      </div>
+      <div class="dashboard-topbar-right">
+        <div class="topbar-search"><input type="text" placeholder="Search products, orders..."><i class="fas fa-search icon"></i></div>
+        <button class="topbar-icon-btn"><i class="fas fa-bell"></i><span class="notif-dot"></span></button>
+        <div class="topbar-email"><i class="fas fa-envelope"></i><span class="email-text" id="topbarEmail">user@example.com</span></div>
+      </div>
+    </div>
+
+    <!-- Section Label -->
+    <div class="dashboard-section-label"><i class="fas fa-receipt"></i> My Orders</div>
+
+    <!-- Order Status Filters -->
+    <div class="dash-card" style="margin-bottom:24px;">
+      <div class="dash-card-body" style="display:flex;gap:12px;flex-wrap:wrap;">
+        <button class="btn btn-primary dash-btn-sm">All</button>
+        <button class="btn btn-outline dash-btn-sm">Delivered</button>
+        <button class="btn btn-outline dash-btn-sm">In Transit</button>
+        <button class="btn btn-outline dash-btn-sm">Processing</button>
+        <button class="btn btn-outline dash-btn-sm">Cancelled</button>
+      </div>
+    </div>
+
+    <!-- Orders Table -->
+    <div class="dash-card dash-card-table">
+      <div class="dash-card-header"><h3>Order History</h3><a href="404.html" class="btn btn-outline dash-btn-sm">Export CSV</a></div>
+      <div class="dash-card-body dash-card-body-table">
+        <table class="dash-table">
+          <thead><tr><th>Order ID</th><th>Products</th><th>Date</th><th>Amount</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td><strong>#ORD-7842</strong></td><td>Mixed FMCG Bundle (8 items)</td><td>Dec 18, 2025</td><td>&#8377;3,450</td><td><span class="status-badge success"><span class="dot"></span>Delivered</span></td></tr>
+            <tr><td><strong>#ORD-7839</strong></td><td>Personal Care Kit (5 items)</td><td>Dec 15, 2025</td><td>&#8377;1,890</td><td><span class="status-badge info"><span class="dot"></span>In Transit</span></td></tr>
+            <tr><td><strong>#ORD-7830</strong></td><td>Snacks & Beverages Pack (12 items)</td><td>Dec 10, 2025</td><td>&#8377;5,230</td><td><span class="status-badge success"><span class="dot"></span>Delivered</span></td></tr>
+            <tr><td><strong>#ORD-7815</strong></td><td>Household Essentials (6 items)</td><td>Dec 05, 2025</td><td>&#8377;2,780</td><td><span class="status-badge warning"><span class="dot"></span>Processing</span></td></tr>
+            <tr><td><strong>#ORD-7801</strong></td><td>Health & Wellness Combo (4 items)</td><td>Dec 01, 2025</td><td>&#8377;1,650</td><td><span class="status-badge success"><span class="dot"></span>Delivered</span></td></tr>
+            <tr><td><strong>#ORD-7788</strong></td><td>Baby Care Essentials (3 items)</td><td>Nov 28, 2025</td><td>&#8377;2,100</td><td><span class="status-badge danger"><span class="dot"></span>Cancelled</span></td></tr>
+            <tr><td><strong>#ORD-7775</strong></td><td>Premium Tea Collection (6 items)</td><td>Nov 22, 2025</td><td>&#8377;1,980</td><td><span class="status-badge success"><span class="dot"></span>Delivered</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="script.js"></script>
+<script>
+  const email = localStorage.getItem('userEmail') || 'user@example.com';
+  const role = localStorage.getItem('userRole') || 'user';
+  const name = email.split('@')[0];
+  document.getElementById('topbarEmail').textContent = email;
+  document.getElementById('topbarGreeting').textContent = name.charAt(0).toUpperCase() + name.slice(1);
+  document.getElementById('sidebarUserName').textContent = name.charAt(0).toUpperCase() + name.slice(1);
+
+  function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('sidebarOverlay').classList.toggle('active'); document.body.style.overflow = document.getElementById('sidebar').classList.contains('open') ? 'hidden' : ''; }
+  function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('sidebarOverlay').classList.remove('active'); document.body.style.overflow = ''; }
+
+  document.querySelectorAll('.chart-bar[data-h]').forEach(b => { b.style.height = b.dataset.h + '%'; });
+
+  if (!localStorage.getItem('userEmail')) window.location.href = 'signin.html';
+</script>
+</body>
+</html>

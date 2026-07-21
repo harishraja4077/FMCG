@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Favorites - Stackly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="dashboard-layout">
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="logo"><div class="logo-icon"><img src="images/logo.webp" alt="Stackly"></div></a>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Main</div>
+        <a href="userdashboard.html" class="sidebar-link"><span class="icon"><i class="fas fa-th-large"></i></span> Dashboard</a>
+        <a href="userorders.html" class="sidebar-link"><span class="icon"><i class="fas fa-shopping-bag"></i></span> My Orders <span class="badge">12</span></a>
+        <a href="userfavorites.html" class="sidebar-link active"><span class="icon"><i class="fas fa-heart"></i></span> Favorites</a>
+        <a href="userwallet.html" class="sidebar-link"><span class="icon"><i class="fas fa-wallet"></i></span> Wallet</a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Shop</div>
+        <a href="product.html" class="sidebar-link"><span class="icon"><i class="fas fa-store"></i></span> Browse Products</a>
+        <a href="usersubscriptions.html" class="sidebar-link"><span class="icon"><i class="fas fa-sync-alt"></i></span> Subscriptions</a>
+        <a href="userdelivery.html" class="sidebar-link"><span class="icon"><i class="fas fa-truck"></i></span> Delivery Tracking</a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Support</div>
+        <a href="contact.html" class="sidebar-link"><span class="icon"><i class="fas fa-headset"></i></span> Help Center</a>
+        <a href="userreport.html" class="sidebar-link"><span class="icon"><i class="fas fa-flag"></i></span> Report Issue</a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Account</div>
+        <a href="usersettings.html" class="sidebar-link"><span class="icon"><i class="fas fa-cog"></i></span> Settings</a>
+        <a href="signin.html" class="sidebar-link" onclick="localStorage.clear()"><span class="icon"><i class="fas fa-sign-out-alt"></i></span> Logout</a>
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar"><img src="https://ui-avatars.com/api/?name=U&background=0d6e3f&color=fff&bold=true" alt="User"></div>
+        <div class="sidebar-user-info">
+          <h4 id="sidebarUserName">User</h4>
+          <p id="sidebarUserRole">Customer</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="dashboard-main">
+    <!-- Topbar -->
+    <div class="dashboard-topbar">
+      <div class="dashboard-topbar-left">
+        <button class="sidebar-toggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+        <div>
+          <h1>Welcome back, <span id="topbarGreeting"></span></h1>
+          <p>Your favorite products, always within reach</p>
+        </div>
+      </div>
+      <div class="dashboard-topbar-right">
+        <div class="topbar-search"><input type="text" placeholder="Search products, orders..."><i class="fas fa-search icon"></i></div>
+        <button class="topbar-icon-btn"><i class="fas fa-bell"></i><span class="notif-dot"></span></button>
+        <div class="topbar-email"><i class="fas fa-envelope"></i><span class="email-text" id="topbarEmail">user@example.com</span></div>
+      </div>
+    </div>
+
+    <!-- Section Label -->
+    <div class="dashboard-section-label"><i class="fas fa-heart"></i> My Favorites</div>
+
+    <!-- Favorites Grid -->
+    <div class="dashboard-grid" style="grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px;">
+      <div class="dash-card">
+        <div class="dash-card-body" style="text-align:center;padding:32px 24px;">
+          <div style="width:80px;height:80px;border-radius:50%;background:var(--gradient-primary);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;"><i class="fas fa-box" style="font-size:32px;color:#fff;"></i></div>
+          <h3 style="margin-bottom:4px;">Mixed FMCG Bundle</h3>
+          <p style="color:var(--text-muted);margin-bottom:8px;">8 essential items</p>
+          <p style="font-size:1.4rem;font-weight:700;color:var(--primary);margin-bottom:16px;">&#8377;3,450</p>
+          <a href="product.html" class="btn btn-primary" style="width:100%;"><i class="fas fa-cart-plus" style="margin-right:6px;"></i>Add to Cart</a>
+        </div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-card-body" style="text-align:center;padding:32px 24px;">
+          <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#f59e0b,#f97316);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;"><i class="fas fa-pump-soap" style="font-size:32px;color:#fff;"></i></div>
+          <h3 style="margin-bottom:4px;">Personal Care Kit</h3>
+          <p style="color:var(--text-muted);margin-bottom:8px;">5 premium items</p>
+          <p style="font-size:1.4rem;font-weight:700;color:var(--primary);margin-bottom:16px;">&#8377;1,890</p>
+          <a href="product.html" class="btn btn-primary" style="width:100%;"><i class="fas fa-cart-plus" style="margin-right:6px;"></i>Add to Cart</a>
+        </div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-card-body" style="text-align:center;padding:32px 24px;">
+          <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#6366f1);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;"><i class="fas fa-cookie-bite" style="font-size:32px;color:#fff;"></i></div>
+          <h3 style="margin-bottom:4px;">Snacks & Beverages Pack</h3>
+          <p style="color:var(--text-muted);margin-bottom:8px;">12 assorted items</p>
+          <p style="font-size:1.4rem;font-weight:700;color:var(--primary);margin-bottom:16px;">&#8377;5,230</p>
+          <a href="product.html" class="btn btn-primary" style="width:100%;"><i class="fas fa-cart-plus" style="margin-right:6px;"></i>Add to Cart</a>
+        </div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-card-body" style="text-align:center;padding:32px 24px;">
+          <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#8b5cf6,#a855f7);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;"><i class="fas fa-house" style="font-size:32px;color:#fff;"></i></div>
+          <h3 style="margin-bottom:4px;">Household Essentials</h3>
+          <p style="color:var(--text-muted);margin-bottom:8px;">6 daily-use items</p>
+          <p style="font-size:1.4rem;font-weight:700;color:var(--primary);margin-bottom:16px;">&#8377;2,780</p>
+          <a href="product.html" class="btn btn-primary" style="width:100%;"><i class="fas fa-cart-plus" style="margin-right:6px;"></i>Add to Cart</a>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="script.js"></script>
+<script>
+  const email = localStorage.getItem('userEmail') || 'user@example.com';
+  const role = localStorage.getItem('userRole') || 'user';
+  const name = email.split('@')[0];
+  document.getElementById('topbarEmail').textContent = email;
+  document.getElementById('topbarGreeting').textContent = name.charAt(0).toUpperCase() + name.slice(1);
+  document.getElementById('sidebarUserName').textContent = name.charAt(0).toUpperCase() + name.slice(1);
+
+  function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('sidebarOverlay').classList.toggle('active'); document.body.style.overflow = document.getElementById('sidebar').classList.contains('open') ? 'hidden' : ''; }
+  function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('sidebarOverlay').classList.remove('active'); document.body.style.overflow = ''; }
+
+  document.querySelectorAll('.chart-bar[data-h]').forEach(b => { b.style.height = b.dataset.h + '%'; });
+
+  if (!localStorage.getItem('userEmail')) window.location.href = 'signin.html';
+</script>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delivery Tracking - Stackly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="dashboard-layout">
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="logo"><div class="logo-icon"><img src="images/logo.webp" alt="Stackly"></div></a>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Main</div>
+        <a href="userdashboard.html" class="sidebar-link"><span class="icon"><i class="fas fa-th-large"></i></span> Dashboard</a>
+        <a href="userorders.html" class="sidebar-link"><span class="icon"><i class="fas fa-shopping-bag"></i></span> My Orders <span class="badge">12</span></a>
+        <a href="userfavorites.html" class="sidebar-link"><span class="icon"><i class="fas fa-heart"></i></span> Favorites</a>
+        <a href="userwallet.html" class="sidebar-link"><span class="icon"><i class="fas fa-wallet"></i></span> Wallet</a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Shop</div>
+        <a href="product.html" class="sidebar-link"><span class="icon"><i class="fas fa-store"></i></span> Browse Products</a>
+        <a href="usersubscriptions.html" class="sidebar-link"><span class="icon"><i class="fas fa-sync-alt"></i></span> Subscriptions</a>
+        <a href="userdelivery.html" class="sidebar-link active"><span class="icon"><i class="fas fa-truck"></i></span> Delivery Tracking</a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Support</div>
+        <a href="contact.html" class="sidebar-link"><span class="icon"><i class="fas fa-headset"></i></span> Help Center</a>
+        <a href="userreport.html" class="sidebar-link"><span class="icon"><i class="fas fa-flag"></i></span> Report Issue</a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Account</div>
+        <a href="usersettings.html" class="sidebar-link"><span class="icon"><i class="fas fa-cog"></i></span> Settings</a>
+        <a href="signin.html" class="sidebar-link" onclick="localStorage.clear()"><span class="icon"><i class="fas fa-sign-out-alt"></i></span> Logout</a>
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar"><img src="https://ui-avatars.com/api/?name=U&background=0d6e3f&color=fff&bold=true" alt="User"></div>
+        <div class="sidebar-user-info">
+          <h4 id="sidebarUserName">User</h4>
+          <p id="sidebarUserRole">Customer</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="dashboard-main">
+    <!-- Topbar -->
+    <div class="dashboard-topbar">
+      <div class="dashboard-topbar-left">
+        <button class="sidebar-toggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+        <div>
+          <h1>Welcome back, <span id="topbarGreeting"></span></h1>
+          <p>Track your active deliveries in real time</p>
+        </div>
+      </div>
+      <div class="dashboard-topbar-right">
+        <div class="topbar-search"><input type="text" placeholder="Search products, orders..."><i class="fas fa-search icon"></i></div>
+        <button class="topbar-icon-btn"><i class="fas fa-bell"></i><span class="notif-dot"></span></button>
+        <div class="topbar-email"><i class="fas fa-envelope"></i><span class="email-text" id="topbarEmail">user@example.com</span></div>
+      </div>
+    </div>
+
+    <!-- Section Label -->
+    <div class="dashboard-section-label"><i class="fas fa-truck"></i> Delivery Tracking</div>
+
+    <!-- Deliveries List -->
+    <div style="display:flex;flex-direction:column;gap:24px;">
+      <!-- Delivery 1 -->
+      <div class="dash-card">
+        <div class="dash-card-header">
+          <h3><strong>#ORD-7839</strong> &mdash; Personal Care Kit</h3>
+          <span class="status-badge info"><span class="dot"></span>In Transit</span>
+        </div>
+        <div class="dash-card-body">
+          <div style="display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;">
+            <div style="flex:1;min-width:240px;">
+              <div style="display:flex;flex-direction:column;gap:12px;">
+                <div style="display:flex;align-items:center;gap:12px;">
+                  <div style="width:32px;height:32px;border-radius:50%;background:var(--primary);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-check" style="color:#fff;font-size:12px;"></i></div>
+                  <div><p style="font-weight:600;font-size:0.9rem;">Order Confirmed</p><p style="color:var(--text-muted);font-size:0.8rem;">Dec 15, 2025 — 10:30 AM</p></div>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px;">
+                  <div style="width:32px;height:32px;border-radius:50%;background:var(--primary);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-check" style="color:#fff;font-size:12px;"></i></div>
+                  <div><p style="font-weight:600;font-size:0.9rem;">Packed at Warehouse</p><p style="color:var(--text-muted);font-size:0.8rem;">Dec 15, 2025 — 2:15 PM</p></div>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px;">
+                  <div style="width:32px;height:32px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;animation:pulse 1.5s infinite;"><i class="fas fa-truck" style="color:#fff;font-size:12px;"></i></div>
+                  <div><p style="font-weight:600;font-size:0.9rem;">Out for Delivery</p><p style="color:var(--text-muted);font-size:0.8rem;">Dec 19, 2025 — 9:00 AM</p></div>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px;">
+                  <div style="width:32px;height:32px;border-radius:50%;background:#e5e7eb;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-home" style="color:#9ca3af;font-size:12px;"></i></div>
+                  <div><p style="font-weight:600;font-size:0.9rem;color:var(--text-muted);">Delivered</p><p style="color:var(--text-muted);font-size:0.8rem;">Estimated: Dec 19, 2025 — 6:00 PM</p></div>
+                </div>
+              </div>
+            </div>
+            <div style="flex-shrink:0;text-align:center;">
+              <div style="width:100px;height:100px;border-radius:50%;background:var(--gradient-primary);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;"><i class="fas fa-truck" style="font-size:36px;color:#fff;"></i></div>
+              <p style="font-weight:600;">5 Items</p>
+              <p style="color:var(--text-muted);font-size:0.85rem;">Personal Care Kit</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Delivery 2 -->
+      <div class="dash-card">
+        <div class="dash-card-header">
+          <h3><strong>#ORD-7815</strong> &mdash; Household Essentials</h3>
+          <span class="status-badge warning"><span class="dot"></span>Processing</span>
+        </div>
+        <div class="dash-card-body">
+          <div style="display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;">
+            <div style="flex:1;min-width:240px;">
+              <div style="display:flex;flex-direction:column;gap:12px;">
+                <div style="display:flex;align-items:center;gap:12px;">
+                  <div style="width:32px;height:32px;border-radius:50%;background:var(--primary);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-check" style="color:#fff;font-size:12px;"></i></div>
+                  <div><p style="font-weight:600;font-size:0.9rem;">Order Confirmed</p><p style="color:var(--text-muted);font-size:0.8rem;">Dec 05, 2025 — 11:45 AM</p></div>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px;">
+                  <div style="width:32px;height:32px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;animation:pulse 1.5s infinite;"><i class="fas fa-box" style="color:#fff;font-size:12px;"></i></div>
+                  <div><p style="font-weight:600;font-size:0.9rem;">Being Packed</p><p style="color:var(--text-muted);font-size:0.8rem;">Estimated: Dec 20, 2025</p></div>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px;">
+                  <div style="width:32px;height:32px;border-radius:50%;background:#e5e7eb;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-truck" style="color:#9ca3af;font-size:12px;"></i></div>
+                  <div><p style="font-weight:600;font-size:0.9rem;color:var(--text-muted);">Shipped</p><p style="color:var(--text-muted);font-size:0.8rem;">Pending</p></div>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px;">
+                  <div style="width:32px;height:32px;border-radius:50%;background:#e5e7eb;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-home" style="color:#9ca3af;font-size:12px;"></i></div>
+                  <div><p style="font-weight:600;font-size:0.9rem;color:var(--text-muted);">Delivered</p><p style="color:var(--text-muted);font-size:0.8rem;">Pending</p></div>
+                </div>
+              </div>
+            </div>
+            <div style="flex-shrink:0;text-align:center;">
+              <div style="width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,#f59e0b,#f97316);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;"><i class="fas fa-box" style="font-size:36px;color:#fff;"></i></div>
+              <p style="font-weight:600;">6 Items</p>
+              <p style="color:var(--text-muted);font-size:0.85rem;">Household Essentials</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Delivery 3 -->
+      <div class="dash-card">
+        <div class="dash-card-header">
+          <h3><strong>#ORD-7842</strong> &mdash; Mixed FMCG Bundle</h3>
+          <span class="status-badge success"><span class="dot"></span>Delivered</span>
+        </div>
+        <div class="dash-card-body">
+          <div style="display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;">
+            <div style="flex:1;min-width:240px;">
+              <div style="display:flex;flex-direction:column;gap:12px;">
+                <div style="display:flex;align-items:center;gap:12px;">
+                  <div style="width:32px;height:32px;border-radius:50%;background:var(--primary);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-check" style="color:#fff;font-size:12px;"></i></div>
+                  <div><p style="font-weight:600;font-size:0.9rem;">Order Confirmed</p><p style="color:var(--text-muted);font-size:0.8rem;">Dec 16, 2025 — 9:00 AM</p></div>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px;">
+                  <div style="width:32px;height:32px;border-radius:50%;background:var(--primary);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-check" style="color:#fff;font-size:12px;"></i></div>
+                  <div><p style="font-weight:600;font-size:0.9rem;">Packed at Warehouse</p><p style="color:var(--text-muted);font-size:0.8rem;">Dec 17, 2025 — 11:00 AM</p></div>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px;">
+                  <div style="width:32px;height:32px;border-radius:50%;background:var(--primary);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-check" style="color:#fff;font-size:12px;"></i></div>
+                  <div><p style="font-weight:600;font-size:0.9rem;">Out for Delivery</p><p style="color:var(--text-muted);font-size:0.8rem;">Dec 18, 2025 — 8:30 AM</p></div>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px;">
+                  <div style="width:32px;height:32px;border-radius:50%;background:var(--success);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-home" style="color:#fff;font-size:12px;"></i></div>
+                  <div><p style="font-weight:600;font-size:0.9rem;color:var(--success);">Delivered</p><p style="color:var(--text-muted);font-size:0.8rem;">Dec 18, 2025 — 2:30 PM</p></div>
+                </div>
+              </div>
+            </div>
+            <div style="flex-shrink:0;text-align:center;">
+              <div style="width:100px;height:100px;border-radius:50%;background:var(--success);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;"><i class="fas fa-check-circle" style="font-size:36px;color:#fff;"></i></div>
+              <p style="font-weight:600;">8 Items</p>
+              <p style="color:var(--text-muted);font-size:0.85rem;">Mixed FMCG Bundle</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="script.js"></script>
+<script>
+  const email = localStorage.getItem('userEmail') || 'user@example.com';
+  const role = localStorage.getItem('userRole') || 'user';
+  const name = email.split('@')[0];
+  document.getElementById('topbarEmail').textContent = email;
+  document.getElementById('topbarGreeting').textContent = name.charAt(0).toUpperCase() + name.slice(1);
+  document.getElementById('sidebarUserName').textContent = name.charAt(0).toUpperCase() + name.slice(1);
+
+  function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('sidebarOverlay').classList.toggle('active'); document.body.style.overflow = document.getElementById('sidebar').classList.contains('open') ? 'hidden' : ''; }
+  function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('sidebarOverlay').classList.remove('active'); document.body.style.overflow = ''; }
+
+  document.querySelectorAll('.chart-bar[data-h]').forEach(b => { b.style.height = b.dataset.h + '%'; });
+
+  if (!localStorage.getItem('userEmail')) window.location.href = 'signin.html';
+</script>
+</body>
+</html>

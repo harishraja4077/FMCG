@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Users - Stackly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="dashboard-layout">
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="logo"><div class="logo-icon"><img src="images/logo.webp" alt="Stackly"></div></a>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Main</div>
+        <a href="admindashboard.html" class="sidebar-link"><span class="icon"><i class="fas fa-th-large"></i></span> Dashboard</a>
+        <a href="adminanalytics.html" class="sidebar-link"><span class="icon"><i class="fas fa-chart-line"></i></span> Analytics</a>
+        <a href="adminorders.html" class="sidebar-link"><span class="icon"><i class="fas fa-shopping-cart"></i></span> Orders <span class="badge">48</span></a>
+        <a href="adminusers.html" class="sidebar-link active"><span class="icon"><i class="fas fa-users"></i></span> Users <span class="badge">1.2k</span></a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Management</div>
+        <a href="product.html" class="sidebar-link"><span class="icon"><i class="fas fa-box"></i></span> Products</a>
+        <a href="admininventory.html" class="sidebar-link"><span class="icon"><i class="fas fa-warehouse"></i></span> Inventory</a>
+        <a href="adminshipments.html" class="sidebar-link"><span class="icon"><i class="fas fa-truck"></i></span> Shipments</a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Finance</div>
+        <a href="adminrevenue.html" class="sidebar-link"><span class="icon"><i class="fas fa-indian-rupee-sign"></i></span> Revenue</a>
+        <a href="adminpayments.html" class="sidebar-link"><span class="icon"><i class="fas fa-credit-card"></i></span> Payments</a>
+        <a href="admininvoices.html" class="sidebar-link"><span class="icon"><i class="fas fa-file-invoice"></i></span> Invoices</a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Settings</div>
+        <a href="admingeneral.html" class="sidebar-link"><span class="icon"><i class="fas fa-cog"></i></span> General</a>
+        <a href="adminnotifications.html" class="sidebar-link"><span class="icon"><i class="fas fa-bell"></i></span> Notifications</a>
+        <a href="signin.html" class="sidebar-link" onclick="localStorage.clear()"><span class="icon"><i class="fas fa-sign-out-alt"></i></span> Logout</a>
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar"><img src="https://ui-avatars.com/api/?name=A&background=ff6b00&color=fff&bold=true" alt="Admin"></div>
+        <div class="sidebar-user-info">
+          <h4 id="sidebarUserName">Admin</h4>
+          <p id="sidebarUserRole">Administrator</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="dashboard-main">
+    <!-- Topbar -->
+    <div class="dashboard-topbar">
+      <div class="dashboard-topbar-left">
+        <button class="sidebar-toggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+        <div>
+          <h1>Admin Panel <span id="topbarGreeting"></span></h1>
+          <p>Manage platform users and activity</p>
+        </div>
+      </div>
+      <div class="dashboard-topbar-right">
+        <div class="topbar-search"><input type="text" placeholder="Search users, products..."><i class="fas fa-search icon"></i></div>
+        <button class="topbar-icon-btn"><i class="fas fa-bell"></i><span class="notif-dot"></span></button>
+        <div class="topbar-email"><i class="fas fa-shield-halved"></i><span class="email-text" id="topbarEmail">admin@example.com</span></div>
+      </div>
+    </div>
+
+    <!-- Stat Cards -->
+    <div class="dashboard-stats">
+      <div class="dash-stat-card">
+        <div class="dash-stat-icon blue"><i class="fas fa-users"></i></div>
+        <div class="dash-stat-info"><h3>1,240</h3><p>Total Users</p><span class="trend up"><i class="fas fa-arrow-up"></i> 9%</span></div>
+      </div>
+      <div class="dash-stat-card">
+        <div class="dash-stat-icon green"><i class="fas fa-user-check"></i></div>
+        <div class="dash-stat-info"><h3>892</h3><p>Active Users</p><span class="trend up"><i class="fas fa-arrow-up"></i> 14%</span></div>
+      </div>
+      <div class="dash-stat-card">
+        <div class="dash-stat-icon orange"><i class="fas fa-user-plus"></i></div>
+        <div class="dash-stat-info"><h3>156</h3><p>New This Month</p><span class="trend up"><i class="fas fa-arrow-up"></i> 22%</span></div>
+      </div>
+      <div class="dash-stat-card">
+        <div class="dash-stat-icon gold"><i class="fas fa-store"></i></div>
+        <div class="dash-stat-info"><h3>342</h3><p>Retailers</p><span class="trend up"><i class="fas fa-arrow-up"></i> 6%</span></div>
+      </div>
+    </div>
+
+    <!-- Top Customers Table -->
+    <div class="dashboard-section-label"><i class="fas fa-crown"></i> Top Customers</div>
+    <div class="dash-card dash-card-table">
+      <div class="dash-card-header"><h3>Top Customers</h3><a href="404.html" class="btn btn-outline dash-btn-sm">View All</a></div>
+      <div class="dash-card-body dash-card-body-table">
+        <table class="dash-table">
+          <thead><tr><th>Customer</th><th>Location</th><th>Orders</th><th>Total Spent</th><th>Last Active</th></tr></thead>
+          <tbody>
+            <tr><td><div class="user-cell"><img src="https://ui-avatars.com/api/?name=Rajesh+Kumar&background=0d6e3f&color=fff&size=38" alt=""><div><div class="name">Rajesh Kumar</div><div class="email">rajesh@email.com</div></div></div></td><td>Salem, TN</td><td><strong>47</strong></td><td><strong>&#8377;1,85,400</strong></td><td>2 hrs ago</td></tr>
+            <tr><td><div class="user-cell"><img src="https://ui-avatars.com/api/?name=Priya+Sharma&background=ff6b00&color=fff&size=38" alt=""><div><div class="name">Priya Sharma</div><div class="email">priya@email.com</div></div></div></td><td>Coimbatore, TN</td><td><strong>38</strong></td><td><strong>&#8377;1,42,200</strong></td><td>5 hrs ago</td></tr>
+            <tr><td><div class="user-cell"><img src="https://ui-avatars.com/api/?name=Amit+Singh&background=3498db&color=fff&size=38" alt=""><div><div class="name">Amit Singh</div><div class="email">amit@email.com</div></div></div></td><td>Bangalore, KA</td><td><strong>31</strong></td><td><strong>&#8377;98,700</strong></td><td>1 day ago</td></tr>
+            <tr><td><div class="user-cell"><img src="https://ui-avatars.com/api/?name=Sneha+Patel&background=9b59b6&color=fff&size=38" alt=""><div><div class="name">Sneha Patel</div><div class="email">sneha@email.com</div></div></div></td><td>Hyderabad, TS</td><td><strong>26</strong></td><td><strong>&#8377;76,500</strong></td><td>3 hrs ago</td></tr>
+            <tr><td><div class="user-cell"><img src="https://ui-avatars.com/api/?name=Vikram+Rao&background=e74c3c&color=fff&size=38" alt=""><div><div class="name">Vikram Rao</div><div class="email">vikram@email.com</div></div></div></td><td>Chennai, TN</td><td><strong>22</strong></td><td><strong>&#8377;64,300</strong></td><td>12 hrs ago</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- User Activity Feed -->
+    <div class="dashboard-grid" style="margin-top:32px;">
+      <div class="dash-card">
+        <div class="dash-card-header"><h3>Recent User Activity</h3></div>
+        <div class="dash-card-body">
+          <div class="activity-list">
+            <div class="activity-item"><div class="activity-icon green"><i class="fas fa-user-plus"></i></div><div class="activity-text"><h4>New Registration</h4><p>Suresh Menon joined as retailer from Chennai</p></div><span class="activity-time">15 min</span></div>
+            <div class="activity-item"><div class="activity-icon blue"><i class="fas fa-shopping-cart"></i></div><div class="activity-text"><h4>Bulk Order Placed</h4><p>Rajesh Kumar ordered Mixed FMCG Bundle (8 items)</p></div><span class="activity-time">1 hr</span></div>
+            <div class="activity-item"><div class="activity-icon orange"><i class="fas fa-star"></i></div><div class="activity-text"><h4>New Review</h4><p>Priya Sharma rated Personal Care Kit 5 stars</p></div><span class="activity-time">2 hrs</span></div>
+            <div class="activity-item"><div class="activity-icon purple"><i class="fas fa-undo"></i></div><div class="activity-text"><h4>Return Request</h4><p>Amit Singh requested return for Order #ORD-7830</p></div><span class="activity-time">4 hrs</span></div>
+            <div class="activity-item"><div class="activity-icon red"><i class="fas fa-exclamation-circle"></i></div><div class="activity-text"><h4>Account Issue</h4><p>Sneha Patel reported login issue</p></div><span class="activity-time">6 hrs</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-card-header"><h3>User Growth</h3></div>
+        <div class="dash-card-body">
+          <div class="chart-placeholder">
+            <div class="chart-bars">
+              <div class="chart-bar" data-h="40" style="background:linear-gradient(180deg,var(--secondary),#ff8533);"><span class="tooltip">Jul: 820</span></div>
+              <div class="chart-bar" data-h="50" style="background:linear-gradient(180deg,var(--secondary),#ff8533);"><span class="tooltip">Aug: 920</span></div>
+              <div class="chart-bar" data-h="55" style="background:linear-gradient(180deg,var(--secondary),#ff8533);"><span class="tooltip">Sep: 980</span></div>
+              <div class="chart-bar" data-h="65" style="background:linear-gradient(180deg,var(--secondary),#ff8533);"><span class="tooltip">Oct: 1,050</span></div>
+              <div class="chart-bar" data-h="75" style="background:linear-gradient(180deg,var(--secondary),#ff8533);"><span class="tooltip">Nov: 1,150</span></div>
+              <div class="chart-bar" data-h="90" style="background:linear-gradient(180deg,var(--secondary),#ff8533);"><span class="tooltip">Dec: 1,240</span></div>
+            </div>
+            <div class="chart-labels"><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="script.js"></script>
+<script>
+  const email = localStorage.getItem('userEmail') || 'admin@example.com';
+  const name = email.split('@')[0];
+  document.getElementById('topbarEmail').textContent = email;
+  document.getElementById('topbarGreeting').textContent = name.charAt(0).toUpperCase() + name.slice(1);
+  document.getElementById('sidebarUserName').textContent = name.charAt(0).toUpperCase() + name.slice(1);
+
+  function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('sidebarOverlay').classList.toggle('active'); document.body.style.overflow = document.getElementById('sidebar').classList.contains('open') ? 'hidden' : ''; }
+  function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('sidebarOverlay').classList.remove('active'); document.body.style.overflow = ''; }
+
+  document.querySelectorAll('.chart-bar[data-h]').forEach(b => { b.style.height = b.dataset.h + '%'; });
+
+  if (!localStorage.getItem('userEmail')) window.location.href = 'signin.html';
+</script>
+</body>
+</html>

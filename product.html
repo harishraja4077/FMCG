@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products - Stackly FMCG</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="preloader-spinner"></div>
+    <p class="preloader-text">Stackly</p>
+  </div>
+
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+  <div class="scroll-progress"></div>
+  <button class="back-to-top"><i class="fas fa-chevron-up"></i></button>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container navbar">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><img src="images/logo.webp" alt="Stackly"></div>
+        
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="product.html" class="nav-link active">Products</a>
+        <a href="career.html" class="nav-link">Careers</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+      <div class="nav-auth">
+        <a href="signin.html" class="nav-login"><i class="fas fa-right-to-bracket"></i> Login</a>
+        <a href="signup.html" class="header-cta">Sign Up Free</a>
+      </div>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </header>
+
+  <div class="mobile-menu">
+    <button class="mobile-menu-close"><i class="fas fa-times"></i></button>
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="product.html" class="nav-link active">Products</a>
+    <a href="career.html" class="nav-link">Careers</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+    <div class="mobile-menu-auth">
+      <a href="signin.html" class="btn btn-outline" style="border-color:rgba(255,255,255,0.3);color:#fff;">Login</a>
+      <a href="signup.html" class="btn btn-secondary">Sign Up Free</a>
+    </div>
+  </div>
+
+  <!-- ========== SECTION 1: PAGE HERO ========== -->
+  <section class="page-hero">
+    <div class="hero-bg-pattern"></div>
+    <div class="page-hero-content">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="sep">/</span>
+        <span>Products</span>
+      </div>
+      <h1 class="reveal">Our <span style="color:var(--accent);">Products</span></h1>
+      <p class="reveal">2,500+ premium FMCG products from 500+ trusted brands</p>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 2: PRODUCT FILTER & GRID ========== -->
+  <section class="products-showcase">
+    <div class="container">
+      <div class="products-filter reveal">
+        <button class="filter-btn active" data-filter="all">All Products</button>
+        <button class="filter-btn" data-filter="food">Food & Snacks</button>
+        <button class="filter-btn" data-filter="personal">Personal Care</button>
+        <button class="filter-btn" data-filter="beverage">Beverages</button>
+        <button class="filter-btn" data-filter="household">Household</button>
+      </div>
+      <div class="products-grid">
+        <!-- Food -->
+        <div class="product-card tilt" data-category="food">
+          <div class="product-image">
+            <img src="images/organic-cereal.webp" alt="Organic Cereal">
+            <span class="product-badge new">New</span>
+            <div class="product-actions">
+              <button class="product-action-btn"><i class="fas fa-heart"></i></button>
+              <button class="product-action-btn"><i class="fas fa-eye"></i></button>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Food & Snacks</span>
+            <h3 class="product-name">Premium Organic Cereal</h3>
+            <div class="product-rating">
+              <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></span>
+              <span class="count">(128)</span>
+            </div>
+            <div class="product-price">
+              <span class="current">$12.99</span>
+              <span class="old">$16.99</span>
+            </div>
+          </div>
+        </div>
+        <!-- Personal Care -->
+        <div class="product-card tilt" data-category="personal">
+          <div class="product-image">
+            <img src="images/skincare.webp" alt="Skincare">
+            <span class="product-badge hot">Hot</span>
+            <div class="product-actions">
+              <button class="product-action-btn"><i class="fas fa-heart"></i></button>
+              <button class="product-action-btn"><i class="fas fa-eye"></i></button>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Personal Care</span>
+            <h3 class="product-name">Vitamin C Face Serum</h3>
+            <div class="product-rating">
+              <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+              <span class="count">(256)</span>
+            </div>
+            <div class="product-price">
+              <span class="current">$24.99</span>
+            </div>
+          </div>
+        </div>
+        <!-- Beverage -->
+        <div class="product-card tilt" data-category="beverage">
+          <div class="product-image">
+            <img src="images/green-tea.webp" alt="Green Tea">
+            <span class="product-badge sale">-30%</span>
+            <div class="product-actions">
+              <button class="product-action-btn"><i class="fas fa-heart"></i></button>
+              <button class="product-action-btn"><i class="fas fa-eye"></i></button>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Beverages</span>
+            <h3 class="product-name">Organic Matcha Green Tea</h3>
+            <div class="product-rating">
+              <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></span>
+              <span class="count">(89)</span>
+            </div>
+            <div class="product-price">
+              <span class="current">$9.99</span>
+              <span class="old">$14.99</span>
+            </div>
+          </div>
+        </div>
+        <!-- Household -->
+        <div class="product-card tilt" data-category="household">
+          <div class="product-image">
+            <img src="images/cleaning.webp" alt="Cleaning">
+            <span class="product-badge new">New</span>
+            <div class="product-actions">
+              <button class="product-action-btn"><i class="fas fa-heart"></i></button>
+              <button class="product-action-btn"><i class="fas fa-eye"></i></button>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Household</span>
+            <h3 class="product-name">Eco-Friendly Clean Spray</h3>
+            <div class="product-rating">
+              <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+              <span class="count">(312)</span>
+            </div>
+            <div class="product-price">
+              <span class="current">$7.49</span>
+            </div>
+          </div>
+        </div>
+        <!-- Food 2 -->
+        <div class="product-card tilt" data-category="food">
+          <div class="product-image">
+            <img src="images/artisan-bread.webp" alt="Artisan Bread">
+            <span class="product-badge sale">-20%</span>
+            <div class="product-actions">
+              <button class="product-action-btn"><i class="fas fa-heart"></i></button>
+              <button class="product-action-btn"><i class="fas fa-eye"></i></button>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Food & Snacks</span>
+            <h3 class="product-name">Artisan Sourdough Bread</h3>
+            <div class="product-rating">
+              <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+              <span class="count">(201)</span>
+            </div>
+            <div class="product-price">
+              <span class="current">$6.99</span>
+              <span class="old">$8.99</span>
+            </div>
+          </div>
+        </div>
+        <!-- Personal Care 2 -->
+        <div class="product-card tilt" data-category="personal">
+          <div class="product-image">
+            <img src="images/shampoo.webp" alt="Shampoo">
+            <span class="product-badge hot">Hot</span>
+            <div class="product-actions">
+              <button class="product-action-btn"><i class="fas fa-heart"></i></button>
+              <button class="product-action-btn"><i class="fas fa-eye"></i></button>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Personal Care</span>
+            <h3 class="product-name">Keratin Repair Shampoo</h3>
+            <div class="product-rating">
+              <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></span>
+              <span class="count">(178)</span>
+            </div>
+            <div class="product-price">
+              <span class="current">$11.99</span>
+            </div>
+          </div>
+        </div>
+        <!-- Beverage 2 -->
+        <div class="product-card tilt" data-category="beverage">
+          <div class="product-image">
+            <img src="images/coffee.webp" alt="Coffee">
+            <span class="product-badge new">New</span>
+            <div class="product-actions">
+              <button class="product-action-btn"><i class="fas fa-heart"></i></button>
+              <button class="product-action-btn"><i class="fas fa-eye"></i></button>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Beverages</span>
+            <h3 class="product-name">Single Origin Arabica</h3>
+            <div class="product-rating">
+              <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+              <span class="count">(345)</span>
+            </div>
+            <div class="product-price">
+              <span class="current">$15.99</span>
+            </div>
+          </div>
+        </div>
+        <!-- Household 2 -->
+        <div class="product-card tilt" data-category="household">
+          <div class="product-image">
+            <img src="images/detergent.webp" alt="Detergent">
+            <span class="product-badge sale">-15%</span>
+            <div class="product-actions">
+              <button class="product-action-btn"><i class="fas fa-heart"></i></button>
+              <button class="product-action-btn"><i class="fas fa-eye"></i></button>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Household</span>
+            <h3 class="product-name">Ultra Clean Detergent</h3>
+            <div class="product-rating">
+              <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></span>
+              <span class="count">(156)</span>
+            </div>
+            <div class="product-price">
+              <span class="current">$14.49</span>
+              <span class="old">$17.99</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 3: FEATURE HIGHLIGHT ========== -->
+  <section class="feature-highlight">
+    <div class="container feature-grid">
+      <div class="feature-image reveal-left">
+        <img src="images/quality-products.webp" alt="Quality Products">
+      </div>
+      <div class="feature-content reveal-right">
+        <div class="section-badge orange"><i class="fas fa-gem"></i> Quality Assured</div>
+        <h2 class="section-title">Premium <span class="orange">Quality</span> Guaranteed</h2>
+        <p class="section-desc">Every product in our catalog undergoes rigorous quality testing before it reaches your shelves.</p>
+        <div class="feature-list">
+          <div class="feature-list-item">
+            <div class="icon"><i class="fas fa-shield-halved"></i></div>
+            <div>
+              <h4>Verified Suppliers</h4>
+              <p>Only certified and trusted manufacturers in our network</p>
+            </div>
+          </div>
+          <div class="feature-list-item">
+            <div class="icon"><i class="fas fa-flask"></i></div>
+            <div>
+              <h4>Lab Tested</h4>
+              <p>Regular quality audits and safety testing on all products</p>
+            </div>
+          </div>
+          <div class="feature-list-item">
+            <div class="icon"><i class="fas fa-certificate"></i></div>
+            <div>
+              <h4>Certified Organic</h4>
+              <p>FSSAI and organic certified product range available</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 4: BRANDS WE CARRY ========== -->
+  <section class="brand-ticker" style="padding:50px 0;">
+    <div class="container reveal" style="text-align:center;margin-bottom:40px;">
+      <div class="section-badge"><i class="fas fa-handshake"></i> Brand Partners</div>
+      <h2 class="section-title">Trusted <span>Brands</span> We Carry</h2>
+    </div>
+    <div class="ticker-track">
+      <div class="ticker-item"><span class="dot"></span> Hindustan Unilever</div>
+      <div class="ticker-item"><span class="dot"></span> Procter & Gamble</div>
+      <div class="ticker-item"><span class="dot"></span> Nestle</div>
+      <div class="ticker-item"><span class="dot"></span> ITC Limited</div>
+      <div class="ticker-item"><span class="dot"></span> Dabur</div>
+      <div class="ticker-item"><span class="dot"></span> Marico</div>
+      <div class="ticker-item"><span class="dot"></span> Godrej Consumer</div>
+      <div class="ticker-item"><span class="dot"></span> Colgate-Palmolive</div>
+      <div class="ticker-item"><span class="dot"></span> Britannia</div>
+      <div class="ticker-item"><span class="dot"></span> Parle Products</div>
+      <div class="ticker-item"><span class="dot"></span> Hindustan Unilever</div>
+      <div class="ticker-item"><span class="dot"></span> Procter & Gamble</div>
+      <div class="ticker-item"><span class="dot"></span> Nestle</div>
+      <div class="ticker-item"><span class="dot"></span> ITC Limited</div>
+      <div class="ticker-item"><span class="dot"></span> Dabur</div>
+      <div class="ticker-item"><span class="dot"></span> Marico</div>
+      <div class="ticker-item"><span class="dot"></span> Godrej Consumer</div>
+      <div class="ticker-item"><span class="dot"></span> Colgate-Palmolive</div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 5: PRODUCT CATEGORIES SHOWCASE ========== -->
+  <section class="product-cta-section">
+    <div class="container">
+      <div class="categories-header reveal">
+        <div class="section-badge"><i class="fas fa-th-large"></i> Categories</div>
+        <h2 class="section-title">Browse by <span>Category</span></h2>
+        <p class="section-desc" style="margin:0 auto;">Find exactly what you need across our diverse product categories.</p>
+      </div>
+      <div class="product-cta-grid">
+        <div class="product-cta-card reveal-scale">
+          <img src="images/food.webp" alt="Food">
+          <div class="product-cta-overlay">
+            <h3>Food & Snacks</h3>
+            <p>650+ Products Available</p>
+          </div>
+        </div>
+        <div class="product-cta-card reveal-scale">
+          <img src="images/skincare.webp" alt="Personal Care">
+          <div class="product-cta-overlay">
+            <h3>Personal Care</h3>
+            <p>480+ Products Available</p>
+          </div>
+        </div>
+        <div class="product-cta-card reveal-scale">
+          <img src="images/coffee.webp" alt="Beverages">
+          <div class="product-cta-overlay">
+            <h3>Beverages</h3>
+            <p>320+ Products Available</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 6: WHY PARTNER WITH US ========== -->
+  <section class="why-section">
+    <div class="container">
+      <div class="categories-header reveal">
+        <div class="section-badge" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.1);color:var(--accent);"><i class="fas fa-handshake"></i> Benefits</div>
+        <h2 class="section-title" style="color:#fff;">Why <span style="color:var(--accent);">Partner</span> With Us</h2>
+        <p class="section-desc" style="color:rgba(255,255,255,0.6);">Unlock exclusive benefits by choosing Stackly as your FMCG partner.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card tilt">
+          <div class="why-icon"><i class="fas fa-percent"></i></div>
+          <h3>Wholesale Pricing</h3>
+          <p>Get the best wholesale rates directly from manufacturers with no middlemen involved.</p>
+        </div>
+        <div class="why-card tilt">
+          <div class="why-icon"><i class="fas fa-boxes-stacked"></i></div>
+          <h3>Wide Selection</h3>
+          <p>Choose from 2,500+ SKUs across multiple FMCG categories under one roof.</p>
+        </div>
+        <div class="why-card tilt">
+          <div class="why-icon"><i class="fas fa-shipping-fast"></i></div>
+          <h3>Free Shipping</h3>
+          <p>Enjoy free delivery on bulk orders with our efficient nationwide logistics network.</p>
+        </div>
+        <div class="why-card tilt">
+          <div class="why-icon"><i class="fas fa-mobile-screen-button"></i></div>
+          <h3>Digital Platform</h3>
+          <p>Order, track, and manage inventory with our easy-to-use digital ordering platform.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 7: TESTIMONIALS ========== -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="testimonials-header reveal">
+        <div class="section-badge"><i class="fas fa-star"></i> Reviews</div>
+        <h2 class="section-title">What Customers <span>Love</span></h2>
+        <p class="section-desc" style="margin:0 auto;">Real feedback from our retail partners and distributors.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card tilt">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">Stackly has transformed our supply chain. Their reliability and product quality is unmatched in the FMCG sector. We've been partners for 8 years now.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">
+              <img src="images/rajesh-kumar.webp" alt="Rajesh Kumar">
+            </div>
+            <div>
+              <div class="testimonial-name">Rajesh Kumar</div>
+              <div class="testimonial-role">CEO, Kumar Retail Chains</div>
+              <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card tilt">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">Their cold chain logistics and fast delivery have helped us reduce waste by 40%. The customer support team is incredibly responsive and helpful.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">
+              <img src="images/priya-sharma.webp" alt="Priya Sharma">
+            </div>
+            <div>
+              <div class="testimonial-name">Priya Sharma</div>
+              <div class="testimonial-role">Director, Fresh Foods Co.</div>
+              <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card tilt">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">Best wholesale prices and genuine products. Stackly is our go-to FMCG distributor. Their digital ordering system makes reordering incredibly easy.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">
+              <img src="images/amit-patel.webp" alt="Amit Patel">
+            </div>
+            <div>
+              <div class="testimonial-name">Amit Patel</div>
+              <div class="testimonial-role">Owner, Patel Supermart</div>
+              <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 8: CTA ========== -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-box reveal-scale">
+        <div class="cta-content">
+          <div class="section-badge" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.15);color:var(--accent);"><i class="fas fa-shopping-cart"></i> Get Started</div>
+          <h2 class="section-title">Ready to <span style="color:var(--accent);">Order</span>?</h2>
+          <p class="section-desc">Join 15,000+ retailers who trust Stackly for their FMCG supply needs.</p>
+        </div>
+        <div class="cta-form">
+          <a href="404.html" class="btn btn-secondary magnetic" style="justify-content:center;">
+            Contact Sales 
+          </a>
+          <a href="404.html" class="btn btn-white magnetic" style="justify-content:center;">
+            Learn About Us <i class="fas fa-info-circle"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <div class="logo-icon"><img src="images/logo.webp" alt="Stackly"></div>
+          </a>
+          <p>India's most trusted FMCG distribution company. Connecting brands with millions of consumers through innovation and excellence.</p>
+          <div class="footer-social">
+            <a href="404.html"><i class="fab fa-facebook-f"></i></a>
+            <a href="404.html"><i class="fab fa-twitter"></i></a>
+            <a href="404.html"><i class="fab fa-instagram"></i></a>
+            <a href="404.html"><i class="fab fa-linkedin-in"></i></a>
+            <a href="404.html"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="product.html">Products</a></li>
+            <li><a href="career.html">Careers</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Categories</h4>
+          <ul>
+            <li><a href="#">Dairy & Beverages</a></li>
+            <li><a href="#">Personal Care</a></li>
+            <li><a href="#">Snacks & Food</a></li>
+            <li><a href="#">Household Care</a></li>
+            <li><a href="#">Health & Wellness</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <div class="footer-contact-item">
+            <div class="icon"><i class="fas fa-location-dot"></i></div>
+            <div class="text">MMR Complex, Chinna Thirupathi,<br>near Chinna Muniyappan Kovil, Salem,<br>Tamil Nadu 636008</div>
+          </div>
+          <div class="footer-contact-item">
+            <div class="icon"><i class="fas fa-phone"></i></div>
+            <div class="text">+91 70107 92745</div>
+          </div>
+          <div class="footer-contact-item">
+            <div class="icon"><i class="fas fa-envelope"></i></div>
+            <div class="text">info@thestackly.com</div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Stackly FMCG. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="404.html">Privacy Policy</a>
+          <a href="404.html">Terms of Service</a>
+          <a href="404.html">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

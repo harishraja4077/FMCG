@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subscriptions - Stackly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="dashboard-layout">
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="logo"><div class="logo-icon"><img src="images/logo.webp" alt="Stackly"></div></a>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Main</div>
+        <a href="userdashboard.html" class="sidebar-link"><span class="icon"><i class="fas fa-th-large"></i></span> Dashboard</a>
+        <a href="userorders.html" class="sidebar-link"><span class="icon"><i class="fas fa-shopping-bag"></i></span> My Orders <span class="badge">12</span></a>
+        <a href="userfavorites.html" class="sidebar-link"><span class="icon"><i class="fas fa-heart"></i></span> Favorites</a>
+        <a href="userwallet.html" class="sidebar-link"><span class="icon"><i class="fas fa-wallet"></i></span> Wallet</a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Shop</div>
+        <a href="product.html" class="sidebar-link"><span class="icon"><i class="fas fa-store"></i></span> Browse Products</a>
+        <a href="usersubscriptions.html" class="sidebar-link active"><span class="icon"><i class="fas fa-sync-alt"></i></span> Subscriptions</a>
+        <a href="userdelivery.html" class="sidebar-link"><span class="icon"><i class="fas fa-truck"></i></span> Delivery Tracking</a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Support</div>
+        <a href="contact.html" class="sidebar-link"><span class="icon"><i class="fas fa-headset"></i></span> Help Center</a>
+        <a href="userreport.html" class="sidebar-link"><span class="icon"><i class="fas fa-flag"></i></span> Report Issue</a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Account</div>
+        <a href="usersettings.html" class="sidebar-link"><span class="icon"><i class="fas fa-cog"></i></span> Settings</a>
+        <a href="signin.html" class="sidebar-link" onclick="localStorage.clear()"><span class="icon"><i class="fas fa-sign-out-alt"></i></span> Logout</a>
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar"><img src="https://ui-avatars.com/api/?name=U&background=0d6e3f&color=fff&bold=true" alt="User"></div>
+        <div class="sidebar-user-info">
+          <h4 id="sidebarUserName">User</h4>
+          <p id="sidebarUserRole">Customer</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="dashboard-main">
+    <!-- Topbar -->
+    <div class="dashboard-topbar">
+      <div class="dashboard-topbar-left">
+        <button class="sidebar-toggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+        <div>
+          <h1>Welcome back, <span id="topbarGreeting"></span></h1>
+          <p>Manage your active subscriptions and deliveries</p>
+        </div>
+      </div>
+      <div class="dashboard-topbar-right">
+        <div class="topbar-search"><input type="text" placeholder="Search products, orders..."><i class="fas fa-search icon"></i></div>
+        <button class="topbar-icon-btn"><i class="fas fa-bell"></i><span class="notif-dot"></span></button>
+        <div class="topbar-email"><i class="fas fa-envelope"></i><span class="email-text" id="topbarEmail">user@example.com</span></div>
+      </div>
+    </div>
+
+    <!-- Section Label -->
+    <div class="dashboard-section-label"><i class="fas fa-sync-alt"></i> My Subscriptions</div>
+
+    <!-- Subscriptions List -->
+    <div style="display:flex;flex-direction:column;gap:24px;">
+      <!-- Subscription 1 -->
+      <div class="dash-card">
+        <div class="dash-card-header">
+          <h3><i class="fas fa-shopping-basket" style="color:var(--primary);margin-right:8px;"></i>Monthly Grocery Bundle</h3>
+          <span class="status-badge success"><span class="dot"></span>Active</span>
+        </div>
+        <div class="dash-card-body">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;margin-bottom:20px;">
+            <div>
+              <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:4px;">Frequency</p>
+              <p style="font-weight:600;">Monthly</p>
+            </div>
+            <div>
+              <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:4px;">Price</p>
+              <p style="font-weight:600;">&#8377;4,999/month</p>
+            </div>
+            <div>
+              <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:4px;">Next Delivery</p>
+              <p style="font-weight:600;">Jan 05, 2026</p>
+            </div>
+            <div>
+              <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:4px;">Items Included</p>
+              <p style="font-weight:600;">25+ FMCG Products</p>
+            </div>
+          </div>
+          <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:20px;">Includes rice, atta, oil, spices, snacks, beverages, cleaning supplies and more — curated for your monthly household needs.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <a href="404.html" class="btn btn-outline dash-btn-sm"><i class="fas fa-edit" style="margin-right:6px;"></i>Modify Bundle</a>
+            <a href="404.html" class="btn btn-outline dash-btn-sm"><i class="fas fa-calendar-alt" style="margin-right:6px;"></i>Skip Next</a>
+            <a href="404.html" class="btn btn-outline dash-btn-sm" style="color:var(--danger);border-color:var(--danger);"><i class="fas fa-times" style="margin-right:6px;"></i>Cancel</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Subscription 2 -->
+      <div class="dash-card">
+        <div class="dash-card-header">
+          <h3><i class="fas fa-pump-soap" style="color:var(--primary);margin-right:8px;"></i>Personal Care Monthly</h3>
+          <span class="status-badge success"><span class="dot"></span>Active</span>
+        </div>
+        <div class="dash-card-body">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;margin-bottom:20px;">
+            <div>
+              <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:4px;">Frequency</p>
+              <p style="font-weight:600;">Monthly</p>
+            </div>
+            <div>
+              <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:4px;">Price</p>
+              <p style="font-weight:600;">&#8377;1,890/month</p>
+            </div>
+            <div>
+              <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:4px;">Next Delivery</p>
+              <p style="font-weight:600;">Jan 12, 2026</p>
+            </div>
+            <div>
+              <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:4px;">Items Included</p>
+              <p style="font-weight:600;">10 Personal Care Items</p>
+            </div>
+          </div>
+          <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:20px;">Shampoo, conditioner, body wash, toothpaste, face wash, moisturizer, deodorant, and more — premium brands delivered monthly.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <a href="404.html" class="btn btn-outline dash-btn-sm"><i class="fas fa-edit" style="margin-right:6px;"></i>Modify Bundle</a>
+            <a href="404.html" class="btn btn-outline dash-btn-sm"><i class="fas fa-calendar-alt" style="margin-right:6px;"></i>Skip Next</a>
+            <a href="404.html" class="btn btn-outline dash-btn-sm" style="color:var(--danger);border-color:var(--danger);"><i class="fas fa-times" style="margin-right:6px;"></i>Cancel</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="script.js"></script>
+<script>
+  const email = localStorage.getItem('userEmail') || 'user@example.com';
+  const role = localStorage.getItem('userRole') || 'user';
+  const name = email.split('@')[0];
+  document.getElementById('topbarEmail').textContent = email;
+  document.getElementById('topbarGreeting').textContent = name.charAt(0).toUpperCase() + name.slice(1);
+  document.getElementById('sidebarUserName').textContent = name.charAt(0).toUpperCase() + name.slice(1);
+
+  function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('sidebarOverlay').classList.toggle('active'); document.body.style.overflow = document.getElementById('sidebar').classList.contains('open') ? 'hidden' : ''; }
+  function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('sidebarOverlay').classList.remove('active'); document.body.style.overflow = ''; }
+
+  document.querySelectorAll('.chart-bar[data-h]').forEach(b => { b.style.height = b.dataset.h + '%'; });
+
+  if (!localStorage.getItem('userEmail')) window.location.href = 'signin.html';
+</script>
+</body>
+</html>

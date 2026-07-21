@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notifications - Stackly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="dashboard-layout">
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="logo"><div class="logo-icon"><img src="images/logo.webp" alt="Stackly"></div></a>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Main</div>
+        <a href="admindashboard.html" class="sidebar-link"><span class="icon"><i class="fas fa-th-large"></i></span> Dashboard</a>
+        <a href="adminanalytics.html" class="sidebar-link"><span class="icon"><i class="fas fa-chart-line"></i></span> Analytics</a>
+        <a href="adminorders.html" class="sidebar-link"><span class="icon"><i class="fas fa-shopping-cart"></i></span> Orders <span class="badge">48</span></a>
+        <a href="adminusers.html" class="sidebar-link"><span class="icon"><i class="fas fa-users"></i></span> Users <span class="badge">1.2k</span></a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Management</div>
+        <a href="product.html" class="sidebar-link"><span class="icon"><i class="fas fa-box"></i></span> Products</a>
+        <a href="admininventory.html" class="sidebar-link"><span class="icon"><i class="fas fa-warehouse"></i></span> Inventory</a>
+        <a href="adminshipments.html" class="sidebar-link"><span class="icon"><i class="fas fa-truck"></i></span> Shipments</a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Finance</div>
+        <a href="adminrevenue.html" class="sidebar-link"><span class="icon"><i class="fas fa-indian-rupee-sign"></i></span> Revenue</a>
+        <a href="adminpayments.html" class="sidebar-link"><span class="icon"><i class="fas fa-credit-card"></i></span> Payments</a>
+        <a href="admininvoices.html" class="sidebar-link"><span class="icon"><i class="fas fa-file-invoice"></i></span> Invoices</a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Settings</div>
+        <a href="admingeneral.html" class="sidebar-link"><span class="icon"><i class="fas fa-cog"></i></span> General</a>
+        <a href="adminnotifications.html" class="sidebar-link active"><span class="icon"><i class="fas fa-bell"></i></span> Notifications</a>
+        <a href="signin.html" class="sidebar-link" onclick="localStorage.clear()"><span class="icon"><i class="fas fa-sign-out-alt"></i></span> Logout</a>
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar"><img src="https://ui-avatars.com/api/?name=A&background=ff6b00&color=fff&bold=true" alt="Admin"></div>
+        <div class="sidebar-user-info">
+          <h4 id="sidebarUserName">Admin</h4>
+          <p id="sidebarUserRole">Administrator</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="dashboard-main">
+    <!-- Topbar -->
+    <div class="dashboard-topbar">
+      <div class="dashboard-topbar-left">
+        <button class="sidebar-toggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+        <div>
+          <h1>Admin Panel <span id="topbarGreeting"></span></h1>
+          <p>Configure notification preferences</p>
+        </div>
+      </div>
+      <div class="dashboard-topbar-right">
+        <div class="topbar-search"><input type="text" placeholder="Search users, products..."><i class="fas fa-search icon"></i></div>
+        <button class="topbar-icon-btn"><i class="fas fa-bell"></i><span class="notif-dot"></span></button>
+        <div class="topbar-email"><i class="fas fa-shield-halved"></i><span class="email-text" id="topbarEmail">admin@example.com</span></div>
+      </div>
+    </div>
+
+    <!-- Notification Settings -->
+    <div class="dashboard-section-label"><i class="fas fa-bell"></i> Notification Settings</div>
+    <div class="dash-card">
+      <div class="dash-card-header"><h3>Email Notifications</h3><a href="404.html" class="btn btn-outline dash-btn-sm">Save Changes</a></div>
+      <div class="dash-card-body">
+        <div class="activity-list">
+          <div class="activity-item"><div class="activity-icon green"><i class="fas fa-toggle-on"></i></div><div class="activity-text"><h4>Order Updates</h4><p>Receive email when orders are placed, shipped or delivered</p></div><span class="activity-time">On</span></div>
+          <div class="activity-item"><div class="activity-icon green"><i class="fas fa-toggle-on"></i></div><div class="activity-text"><h4>Payment Alerts</h4><p>Email notification for payments received or failed</p></div><span class="activity-time">On</span></div>
+          <div class="activity-item"><div class="activity-icon green"><i class="fas fa-toggle-on"></i></div><div class="activity-text"><h4>Low Stock Alerts</h4><p>Email when product stock falls below threshold</p></div><span class="activity-time">On</span></div>
+          <div class="activity-item"><div class="activity-icon orange"><i class="fas fa-toggle-off"></i></div><div class="activity-text"><h4>Weekly Reports</h4><p>Weekly summary of platform performance via email</p></div><span class="activity-time">Off</span></div>
+          <div class="activity-item"><div class="activity-icon orange"><i class="fas fa-toggle-off"></i></div><div class="activity-text"><h4>Marketing Emails</h4><p>Promotional content and product updates</p></div><span class="activity-time">Off</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SMS + Push Notifications -->
+    <div class="dashboard-grid" style="margin-top:32px;">
+      <div class="dash-card">
+        <div class="dash-card-header"><h3>SMS Notifications</h3></div>
+        <div class="dash-card-body">
+          <div class="activity-list">
+            <div class="activity-item"><div class="activity-icon green"><i class="fas fa-toggle-on"></i></div><div class="activity-text"><h4>Order Confirmation</h4><p>SMS sent on new order placement</p></div><span class="activity-time">On</span></div>
+            <div class="activity-item"><div class="activity-icon green"><i class="fas fa-toggle-on"></i></div><div class="activity-text"><h4>Delivery Updates</h4><p>SMS for out for delivery and delivered</p></div><span class="activity-time">On</span></div>
+            <div class="activity-item"><div class="activity-icon orange"><i class="fas fa-toggle-off"></i></div><div class="activity-text"><h4>Payment Reminders</h4><p>SMS reminders for pending payments</p></div><span class="activity-time">Off</span></div>
+            <div class="activity-item"><div class="activity-icon orange"><i class="fas fa-toggle-off"></i></div><div class="activity-text"><h4>Promotional SMS</h4><p>Marketing and promotional messages</p></div><span class="activity-time">Off</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-card-header"><h3>Push Notifications</h3></div>
+        <div class="dash-card-body">
+          <div class="activity-list">
+            <div class="activity-item"><div class="activity-icon green"><i class="fas fa-toggle-on"></i></div><div class="activity-text"><h4>Browser Notifications</h4><p>Real-time alerts in browser</p></div><span class="activity-time">On</span></div>
+            <div class="activity-item"><div class="activity-icon green"><i class="fas fa-toggle-on"></i></div><div class="activity-text"><h4>New Order Alerts</h4><p>Instant push on new order</p></div><span class="activity-time">On</span></div>
+            <div class="activity-item"><div class="activity-icon green"><i class="fas fa-toggle-on"></i></div><div class="activity-text"><h4>Inventory Alerts</h4><p>Push notification for low stock</p></div><span class="activity-time">On</span></div>
+            <div class="activity-item"><div class="activity-icon orange"><i class="fas fa-toggle-off"></i></div><div class="activity-text"><h4>Chat Messages</h4><p>Push for customer support messages</p></div><span class="activity-time">Off</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Notifications -->
+    <div class="dashboard-section-label" style="margin-top:32px;"><i class="fas fa-history"></i> Recent Notifications</div>
+    <div class="dash-card">
+      <div class="dash-card-header"><h3>Notification History</h3></div>
+      <div class="dash-card-body">
+        <div class="activity-list">
+          <div class="activity-item"><div class="activity-icon green"><i class="fas fa-check-circle"></i></div><div class="activity-text"><h4>Payment Received</h4><p>&#8377;3,450 from Rajesh Kumar via UPI</p></div><span class="activity-time">1 hr ago</span></div>
+          <div class="activity-item"><div class="activity-icon blue"><i class="fas fa-truck"></i></div><div class="activity-text"><h4>Shipment Dispatched</h4><p>#SHP-3201 left Salem hub for Coimbatore</p></div><span class="activity-time">2 hrs ago</span></div>
+          <div class="activity-item"><div class="activity-icon orange"><i class="fas fa-exclamation-triangle"></i></div><div class="activity-text"><h4>Low Stock Alert</h4><p>Colgate MaxFresh 150g below threshold (4 units)</p></div><span class="activity-time">4 hrs ago</span></div>
+          <div class="activity-item"><div class="activity-icon green"><i class="fas fa-user-plus"></i></div><div class="activity-text"><h4>New User Registration</h4><p>Suresh Menon joined as retailer from Chennai</p></div><span class="activity-time">6 hrs ago</span></div>
+          <div class="activity-item"><div class="activity-icon red"><i class="fas fa-times-circle"></i></div><div class="activity-text"><h4>Order Cancelled</h4><p>#ORD-7838 cancelled by Vikram Rao</p></div><span class="activity-time">8 hrs ago</span></div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="script.js"></script>
+<script>
+  const email = localStorage.getItem('userEmail') || 'admin@example.com';
+  const name = email.split('@')[0];
+  document.getElementById('topbarEmail').textContent = email;
+  document.getElementById('topbarGreeting').textContent = name.charAt(0).toUpperCase() + name.slice(1);
+  document.getElementById('sidebarUserName').textContent = name.charAt(0).toUpperCase() + name.slice(1);
+
+  function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('sidebarOverlay').classList.toggle('active'); document.body.style.overflow = document.getElementById('sidebar').classList.contains('open') ? 'hidden' : ''; }
+  function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('sidebarOverlay').classList.remove('active'); document.body.style.overflow = ''; }
+
+  document.querySelectorAll('.chart-bar[data-h]').forEach(b => { b.style.height = b.dataset.h + '%'; });
+
+  if (!localStorage.getItem('userEmail')) window.location.href = 'signin.html';
+</script>
+</body>
+</html>

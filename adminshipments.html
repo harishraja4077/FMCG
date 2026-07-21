@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shipments - Stackly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="dashboard-layout">
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="logo"><div class="logo-icon"><img src="images/logo.webp" alt="Stackly"></div></a>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Main</div>
+        <a href="admindashboard.html" class="sidebar-link"><span class="icon"><i class="fas fa-th-large"></i></span> Dashboard</a>
+        <a href="adminanalytics.html" class="sidebar-link"><span class="icon"><i class="fas fa-chart-line"></i></span> Analytics</a>
+        <a href="adminorders.html" class="sidebar-link"><span class="icon"><i class="fas fa-shopping-cart"></i></span> Orders <span class="badge">48</span></a>
+        <a href="adminusers.html" class="sidebar-link"><span class="icon"><i class="fas fa-users"></i></span> Users <span class="badge">1.2k</span></a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Management</div>
+        <a href="product.html" class="sidebar-link"><span class="icon"><i class="fas fa-box"></i></span> Products</a>
+        <a href="admininventory.html" class="sidebar-link"><span class="icon"><i class="fas fa-warehouse"></i></span> Inventory</a>
+        <a href="adminshipments.html" class="sidebar-link active"><span class="icon"><i class="fas fa-truck"></i></span> Shipments</a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Finance</div>
+        <a href="adminrevenue.html" class="sidebar-link"><span class="icon"><i class="fas fa-indian-rupee-sign"></i></span> Revenue</a>
+        <a href="adminpayments.html" class="sidebar-link"><span class="icon"><i class="fas fa-credit-card"></i></span> Payments</a>
+        <a href="admininvoices.html" class="sidebar-link"><span class="icon"><i class="fas fa-file-invoice"></i></span> Invoices</a>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Settings</div>
+        <a href="admingeneral.html" class="sidebar-link"><span class="icon"><i class="fas fa-cog"></i></span> General</a>
+        <a href="adminnotifications.html" class="sidebar-link"><span class="icon"><i class="fas fa-bell"></i></span> Notifications</a>
+        <a href="signin.html" class="sidebar-link" onclick="localStorage.clear()"><span class="icon"><i class="fas fa-sign-out-alt"></i></span> Logout</a>
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar"><img src="https://ui-avatars.com/api/?name=A&background=ff6b00&color=fff&bold=true" alt="Admin"></div>
+        <div class="sidebar-user-info">
+          <h4 id="sidebarUserName">Admin</h4>
+          <p id="sidebarUserRole">Administrator</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="dashboard-main">
+    <!-- Topbar -->
+    <div class="dashboard-topbar">
+      <div class="dashboard-topbar-left">
+        <button class="sidebar-toggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+        <div>
+          <h1>Admin Panel <span id="topbarGreeting"></span></h1>
+          <p>Track and manage all shipments</p>
+        </div>
+      </div>
+      <div class="dashboard-topbar-right">
+        <div class="topbar-search"><input type="text" placeholder="Search users, products..."><i class="fas fa-search icon"></i></div>
+        <button class="topbar-icon-btn"><i class="fas fa-bell"></i><span class="notif-dot"></span></button>
+        <div class="topbar-email"><i class="fas fa-shield-halved"></i><span class="email-text" id="topbarEmail">admin@example.com</span></div>
+      </div>
+    </div>
+
+    <!-- Stat Cards -->
+    <div class="dashboard-stats">
+      <div class="dash-stat-card">
+        <div class="dash-stat-icon blue"><i class="fas fa-truck"></i></div>
+        <div class="dash-stat-info"><h3>256</h3><p>In Transit</p><span class="trend up"><i class="fas fa-arrow-up"></i> 12%</span></div>
+      </div>
+      <div class="dash-stat-card">
+        <div class="dash-stat-icon green"><i class="fas fa-check-double"></i></div>
+        <div class="dash-stat-info"><h3>1,892</h3><p>Delivered</p><span class="trend up"><i class="fas fa-arrow-up"></i> 18%</span></div>
+      </div>
+      <div class="dash-stat-card">
+        <div class="dash-stat-icon orange"><i class="fas fa-box"></i></div>
+        <div class="dash-stat-info"><h3>48</h3><p>Awaiting Pickup</p><span class="trend up"><i class="fas fa-arrow-up"></i> 8%</span></div>
+      </div>
+      <div class="dash-stat-card">
+        <div class="dash-stat-icon gold"><i class="fas fa-warehouse"></i></div>
+        <div class="dash-stat-info"><h3>4</h3><p>Active Hubs</p><span class="trend up"><i class="fas fa-arrow-up"></i> 1 new</span></div>
+      </div>
+    </div>
+
+    <!-- Shipments Table -->
+    <div class="dashboard-section-label"><i class="fas fa-shipping-fast"></i> Shipment Tracking</div>
+    <div class="dash-card dash-card-table">
+      <div class="dash-card-header"><h3>Recent Shipments</h3><a href="404.html" class="btn btn-outline dash-btn-sm">Export CSV</a></div>
+      <div class="dash-card-body dash-card-body-table">
+        <table class="dash-table">
+          <thead><tr><th>Shipment ID</th><th>Order</th><th>Customer</th><th>Destination</th><th>Carrier</th><th>Status</th><th>ETA</th></tr></thead>
+          <tbody>
+            <tr><td><strong>#SHP-3201</strong></td><td>#ORD-7841</td><td>Priya Sharma</td><td>Coimbatore, TN</td><td>BlueDart</td><td><span class="status-badge info"><span class="dot"></span>In Transit</span></td><td>Dec 20</td></tr>
+            <tr><td><strong>#SHP-3200</strong></td><td>#ORD-7839</td><td>Sneha Patel</td><td>Hyderabad, TS</td><td>Delhivery</td><td><span class="status-badge warning"><span class="dot"></span>Out for Delivery</span></td><td>Dec 19</td></tr>
+            <tr><td><strong>#SHP-3199</strong></td><td>#ORD-7842</td><td>Rajesh Kumar</td><td>Salem, TN</td><td>India Post</td><td><span class="status-badge success"><span class="dot"></span>Delivered</span></td><td>Dec 18</td></tr>
+            <tr><td><strong>#SHP-3198</strong></td><td>#ORD-7840</td><td>Amit Singh</td><td>Bangalore, KA</td><td>BlueDart</td><td><span class="status-badge success"><span class="dot"></span>Delivered</span></td><td>Dec 17</td></tr>
+            <tr><td><strong>#SHP-3197</strong></td><td>#ORD-7838</td><td>Vikram Rao</td><td>Chennai, TN</td><td>Delhivery</td><td><span class="status-badge danger"><span class="dot"></span>Returned</span></td><td>Dec 16</td></tr>
+            <tr><td><strong>#SHP-3196</strong></td><td>#ORD-7837</td><td>Meena Iyer</td><td>Madurai, TN</td><td>India Post</td><td><span class="status-badge success"><span class="dot"></span>Delivered</span></td><td>Dec 15</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Shipment Activity + Carrier Split -->
+    <div class="dashboard-grid" style="margin-top:32px;">
+      <div class="dash-card">
+        <div class="dash-card-header"><h3>Shipment Activity</h3></div>
+        <div class="dash-card-body">
+          <div class="activity-list">
+            <div class="activity-item"><div class="activity-icon blue"><i class="fas fa-truck"></i></div><div class="activity-text"><h4>Shipment Dispatched</h4><p>#SHP-3201 left Salem hub for Coimbatore</p></div><span class="activity-time">30 min</span></div>
+            <div class="activity-item"><div class="activity-icon green"><i class="fas fa-check-circle"></i></div><div class="activity-text"><h4>Delivery Confirmed</h4><p>#SHP-3199 delivered to Rajesh Kumar</p></div><span class="activity-time">2 hrs</span></div>
+            <div class="activity-item"><div class="activity-icon orange"><i class="fas fa-box"></i></div><div class="activity-text"><h4>Pickup Scheduled</h4><p>48 orders from Salem warehouse for tomorrow</p></div><span class="activity-time">4 hrs</span></div>
+            <div class="activity-item"><div class="activity-icon red"><i class="fas fa-undo"></i></div><div class="activity-text"><h4>Return Initiated</h4><p>#SHP-3197 return from Vikram Rao — damaged item</p></div><span class="activity-time">6 hrs</span></div>
+            <div class="activity-item"><div class="activity-icon purple"><i class="fas fa-map-marker-alt"></i></div><div class="activity-text"><h4>Out for Delivery</h4><p>#SHP-3200 is out for delivery in Hyderabad</p></div><span class="activity-time">8 hrs</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-card-header"><h3>Carrier Performance</h3></div>
+        <div class="dash-card-body dash-card-body-table">
+          <table class="dash-table">
+            <thead><tr><th>Carrier</th><th>Shipments</th><th>On-Time</th><th>Rating</th></tr></thead>
+            <tbody>
+              <tr><td><strong>BlueDart</strong></td><td>124</td><td>96%</td><td><span class="trend up">4.8/5</span></td></tr>
+              <tr><td><strong>Delhivery</strong></td><td>98</td><td>92%</td><td><span class="trend up">4.5/5</span></td></tr>
+              <tr><td><strong>India Post</strong></td><td>34</td><td>85%</td><td><span class="trend up">4.2/5</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="script.js"></script>
+<script>
+  const email = localStorage.getItem('userEmail') || 'admin@example.com';
+  const name = email.split('@')[0];
+  document.getElementById('topbarEmail').textContent = email;
+  document.getElementById('topbarGreeting').textContent = name.charAt(0).toUpperCase() + name.slice(1);
+  document.getElementById('sidebarUserName').textContent = name.charAt(0).toUpperCase() + name.slice(1);
+
+  function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('sidebarOverlay').classList.toggle('active'); document.body.style.overflow = document.getElementById('sidebar').classList.contains('open') ? 'hidden' : ''; }
+  function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('sidebarOverlay').classList.remove('active'); document.body.style.overflow = ''; }
+
+  document.querySelectorAll('.chart-bar[data-h]').forEach(b => { b.style.height = b.dataset.h + '%'; });
+
+  if (!localStorage.getItem('userEmail')) window.location.href = 'signin.html';
+</script>
+</body>
+</html>
