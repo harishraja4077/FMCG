@@ -58,6 +58,21 @@ if (header) {
   });
 }
 
+// ========== SCROLL LOCK UTILITIES ==========
+function lockScroll() {
+  window._scrollPos = window.scrollY;
+  document.body.style.position = 'fixed';
+  document.body.style.top = '-' + window._scrollPos + 'px';
+  document.body.style.width = '100%';
+}
+
+function unlockScroll() {
+  document.body.style.position = '';
+  document.body.style.top = '';
+  document.body.style.width = '';
+  window.scrollTo(0, window._scrollPos || 0);
+}
+
 // ========== MOBILE MENU ==========
 const hamburger = document.querySelector('.hamburger');
 const mobileMenu = document.querySelector('.mobile-menu');
@@ -75,7 +90,7 @@ if (!mobileMenuOverlay && mobileMenu) {
 function openMobileMenu() {
   if (mobileMenu) {
     mobileMenu.classList.add('open');
-    document.body.style.overflow = 'hidden';
+    lockScroll();
   }
   if (mobileMenuOverlay) {
     mobileMenuOverlay.classList.add('active');
@@ -85,7 +100,7 @@ function openMobileMenu() {
 function closeMobileMenu() {
   if (mobileMenu) {
     mobileMenu.classList.remove('open');
-    document.body.style.overflow = '';
+    unlockScroll();
   }
   if (mobileMenuOverlay) {
     mobileMenuOverlay.classList.remove('active');

@@ -174,8 +174,8 @@
   document.getElementById('topbarGreeting').textContent = name.charAt(0).toUpperCase() + name.slice(1);
   document.getElementById('sidebarUserName').textContent = name.charAt(0).toUpperCase() + name.slice(1);
 
-  function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('sidebarOverlay').classList.toggle('active'); document.body.style.overflow = document.getElementById('sidebar').classList.contains('open') ? 'hidden' : ''; }
-  function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('sidebarOverlay').classList.remove('active'); document.body.style.overflow = ''; }
+  function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('sidebarOverlay').classList.toggle('active'); if (document.getElementById('sidebar').classList.contains('open')) { lockScroll(); } else { unlockScroll(); } }
+  function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('sidebarOverlay').classList.remove('active'); unlockScroll(); }
 
   document.querySelectorAll('.chart-bar[data-h]').forEach(b => { b.style.height = b.dataset.h + '%'; });
 

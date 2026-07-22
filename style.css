@@ -278,12 +278,13 @@ img {
   transition: transform 0.3s ease;
   position: relative;
   flex-shrink: 0;
-  transform: scale(1.6);
+  transform: scale(3.6);
   transform-origin: left center;
+  margin-left: -50px;
 }
 
 .logo:hover .logo-icon {
-  transform: scale(1.7);
+  transform: scale(3.7);
 }
 
 .logo-icon img {
@@ -3386,6 +3387,11 @@ textarea.form-control {
 
 /* ========== RESPONSIVE — TABLET 768px ========== */
 @media (max-width: 768px) {
+  /* Logo: reset desktop nudge */
+  .logo-icon {
+    margin-left: 0;
+  }
+
   /* Navigation: show hamburger, hide desktop nav */
   .nav-links {
     display: none;
