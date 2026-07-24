@@ -1826,6 +1826,21 @@ img {
   background: rgba(255, 255, 255, 0.12);
 }
 
+.cta-input.input-error {
+  border-color: #e74c3c;
+  background: rgba(231, 76, 60, 0.05);
+}
+
+.field-error {
+  display: block;
+  color: #e74c3c;
+  font-size: 0.78rem;
+  margin-top: 4px;
+  margin-bottom: 2px;
+  min-height: 0;
+  line-height: 1.3;
+}
+
 .cta-form .btn {
   width: 100%;
   justify-content: center;

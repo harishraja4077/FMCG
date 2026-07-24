@@ -406,13 +406,16 @@
           <h2 class="section-title">Ready to Launch <span style="color:var(--accent);">Your Career</span>?</h2>
           <p class="section-desc">Don't see a role that fits? Send us your resume anyway. We're always looking for exceptional talent.</p>
         </div>
-        <form class="cta-form" onsubmit="return false;">
+        <form class="cta-form" id="careerResume" onsubmit="return handleCareerSubmit(event);">
           <div class="cta-input-group">
-            <input type="text" class="cta-input" placeholder="Your Name">
-            <input type="email" class="cta-input" placeholder="Email Address">
+            <input type="text" id="career-name" class="cta-input" placeholder="Your Name">
+            <input type="email" id="career-email" class="cta-input" placeholder="Email Address">
           </div>
-          <input type="text" class="cta-input" placeholder="Your Resume Link (Google Drive / LinkedIn)">
-          <button type="submit" class="btn btn-secondary magnetic" onclick="window.location.href='404.html'">
+          <span class="field-error" id="career-name-error"></span>
+          <span class="field-error" id="career-email-error"></span>
+          <input type="text" id="career-resume" class="cta-input" placeholder="Your Resume Link (Google Drive / LinkedIn)">
+          <span class="field-error" id="career-resume-error"></span>
+          <button type="submit" class="btn btn-secondary magnetic" id="careerSubmitBtn">
             Send Your Resume <i class="fas fa-paper-plane"></i>
           </button>
         </form>
@@ -485,5 +488,71 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    function handleCareerSubmit(e) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+
+      const nameInput = document.getElementById('career-name');
+      const emailInput = document.getElementById('career-email');
+      const resumeInput = document.getElementById('career-resume');
+      const nameError = document.getElementById('career-name-error');
+      const emailError = document.getElementById('career-email-error');
+      const resumeError = document.getElementById('career-resume-error');
+      const btn = document.getElementById('careerSubmitBtn');
+
+      nameError.textContent = '';
+      emailError.textContent = '';
+      resumeError.textContent = '';
+      nameInput.classList.remove('input-error');
+      emailInput.classList.remove('input-error');
+      resumeInput.classList.remove('input-error');
+
+      const name = nameInput.value.trim();
+      const email = emailInput.value.trim();
+      const resume = resumeInput.value.trim();
+
+      let valid = true;
+
+      if (!name) {
+        nameError.textContent = 'Please enter your name.';
+        nameInput.classList.add('input-error');
+        valid = false;
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email) {
+        emailError.textContent = 'Please enter your email address.';
+        emailInput.classList.add('input-error');
+        valid = false;
+      } else if (!emailRegex.test(email)) {
+        emailError.textContent = 'Please enter a valid email address.';
+        emailInput.classList.add('input-error');
+        valid = false;
+      }
+
+      const urlRegex = /^(https?:\/\/)?(drive\.google\.com|docs\.google\.com|www\.linkedin\.com|linkedin\.com).+/i;
+      if (!resume) {
+        resumeError.textContent = 'Please enter your resume link.';
+        resumeInput.classList.add('input-error');
+        valid = false;
+      } else if (!urlRegex.test(resume)) {
+        resumeError.textContent = 'Please enter a valid Google Drive or LinkedIn URL.';
+        resumeInput.classList.add('input-error');
+        valid = false;
+      }
+
+      if (!valid) {
+        return false;
+      }
+
+      btn.innerHTML = '<i class="fas fa-check-circle"></i> Sent!';
+      btn.style.background = '#10b981';
+      setTimeout(() => {
+        window.location.href = '404.html';
+      }, 1500);
+      return false;
+    }
+  </script>
 </body>
 </html>

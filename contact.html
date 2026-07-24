@@ -80,7 +80,7 @@
           <div class="section-badge"><i class="fas fa-envelope"></i> Send Message</div>
           <h2 class="section-title" style="margin-bottom:8px;">Let's <span>Talk</span></h2>
           <p class="section-desc" style="margin-bottom:30px;">Fill out the form and our team will get back to you within 24 hours.</p>
-          <form onsubmit="return false;">
+          <form onsubmit="return handleContactSubmit(event);">
             <div class="form-row">
               <div class="form-group">
                 <label>First Name *</label>
@@ -109,7 +109,7 @@
               <label>Message *</label>
               <textarea class="form-control" placeholder="Tell us more about your inquiry..." required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary magnetic" style="width:100%;justify-content:center;" onclick="window.location.href='404.html'">
+            <button type="submit" class="btn btn-primary magnetic" style="width:100%;justify-content:center;">
               Send Message <i class="fas fa-paper-plane"></i>
             </button>
           </form>
@@ -151,7 +151,7 @@
   <!-- ========== SECTION 3: MAP ========== -->
   <section class="map-section">
     <div class="map-placeholder">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.11609823277!2d72.74109995709657!3d19.08219783958221!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c6306644edc1%3A0x5da4ed8f8d648c69!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3906.8!2d78.15!3d11.65!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3babaa5e3e5f1a1d%3A0x1234567890abcdef!2sMMR%20Complex%2C%20Chinna%20Thirupathi%2C%20near%20Chinna%20Muniyappan%20Kovil%2C%20Salem%2C%20Tamil%20Nadu%20636008!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </section>
 
@@ -371,12 +371,12 @@
           <h2 class="section-title">Join Our <span style="color:var(--accent);">Newsletter</span></h2>
           <p class="section-desc">Get exclusive deals, industry insights, and the latest FMCG trends delivered to your inbox.</p>
         </div>
-        <form class="cta-form" onsubmit="return false;">
+        <form class="cta-form" id="contactNewsletter" onsubmit="return handleNewsletterSubmit(event, 'contactNewsletter');">
           <div class="cta-input-group">
             <input type="text" class="cta-input" placeholder="Your Name">
             <input type="email" class="cta-input" placeholder="Email Address">
           </div>
-          <button type="submit" class="btn btn-secondary magnetic" onclick="window.location.href='404.html'">
+          <button type="submit" class="btn btn-secondary magnetic">
             Subscribe Now <i class="fas fa-paper-plane"></i>
           </button>
         </form>
@@ -449,5 +449,44 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      const form = e.target;
+      const inputs = form.querySelectorAll('input, textarea');
+      let allFilled = true;
+      inputs.forEach(input => {
+        if (input.hasAttribute('required') && !input.value.trim()) {
+          allFilled = false;
+        }
+      });
+      if (!allFilled) {
+        alert('Please enter the details');
+        return false;
+      }
+      window.location.href = '404.html';
+      return false;
+    }
+
+    function handleNewsletterSubmit(e, formId) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      const form = document.getElementById(formId);
+      const inputs = form.querySelectorAll('input');
+      let allFilled = true;
+      inputs.forEach(input => {
+        if (!input.value.trim()) {
+          allFilled = false;
+        }
+      });
+      if (!allFilled) {
+        alert('Please enter the details');
+        return false;
+      }
+      window.location.href = '404.html';
+      return false;
+    }
+  </script>
 </body>
 </html>

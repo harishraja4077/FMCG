@@ -205,6 +205,18 @@
 
     function handleSignUp() {
       const btn = event.target.closest('button');
+      const form = document.getElementById('signupForm');
+      const inputs = form.querySelectorAll('input[required], select');
+      let allFilled = true;
+      inputs.forEach(input => {
+        if (!input.value.trim()) {
+          allFilled = false;
+        }
+      });
+      if (!allFilled) {
+        alert('Please enter the details');
+        return;
+      }
       const terms = document.getElementById('termsCheck');
       if (!terms.checked) {
         terms.style.outline = '2px solid #e74c3c';

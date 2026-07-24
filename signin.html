@@ -155,6 +155,11 @@
     function handleSignIn() {
       const btn = event.target.closest('button');
       const email = document.getElementById('signin-email').value;
+      const password = document.getElementById('signin-password').value;
+      if (!email || !password) {
+        alert('Please enter the details');
+        return;
+      }
       const originalHTML = btn.innerHTML;
       btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing In...';
       btn.disabled = true;
@@ -165,11 +170,11 @@
         localStorage.setItem('userEmail', email);
         localStorage.setItem('userRole', selectedRole);
         setTimeout(() => {
-          if (selectedRole === 'admin') {
-            window.location.href = 'admindashboard.html';
-          } else {
-            window.location.href = 'userdashboard.html';
-          }
+           if (selectedRole === 'admin') {
+        window.location.href = 'admindashboard.html';
+      } else {
+        window.location.href = 'userdashboard.html';
+      }
         }, 800);
       }, 1500);
     }
