@@ -224,6 +224,18 @@
         emailInput.focus();
         return;
       }
+      const password = document.getElementById('signup-password').value;
+      const confirmPassword = document.getElementById('signup-confirm').value;
+      if (password.length < 8) {
+        alert('Password must be at least 8 characters long');
+        document.getElementById('signup-password').focus();
+        return;
+      }
+      if (password !== confirmPassword) {
+        alert('Passwords do not match');
+        document.getElementById('signup-confirm').focus();
+        return;
+      }
       const terms = document.getElementById('termsCheck');
       if (!terms.checked) {
         terms.style.outline = '2px solid #e74c3c';

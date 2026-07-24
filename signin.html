@@ -165,6 +165,10 @@
         alert('Please enter a valid email address');
         return;
       }
+      if (password.length < 8) {
+        alert('Password must be at least 8 characters long');
+        return;
+      }
       const originalHTML = btn.innerHTML;
       btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing In...';
       btn.disabled = true;
