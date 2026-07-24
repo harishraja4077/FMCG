@@ -156,8 +156,13 @@
       const btn = event.target.closest('button');
       const email = document.getElementById('signin-email').value;
       const password = document.getElementById('signin-password').value;
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!email || !password) {
         alert('Please enter the details');
+        return;
+      }
+      if (!emailRegex.test(email)) {
+        alert('Please enter a valid email address');
         return;
       }
       const originalHTML = btn.innerHTML;
