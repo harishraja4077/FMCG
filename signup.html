@@ -217,6 +217,13 @@
         alert('Please enter the details');
         return;
       }
+      const emailInput = form.querySelector('input[type="email"]');
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(emailInput.value)) {
+        alert('Please enter a valid email address');
+        emailInput.focus();
+        return;
+      }
       const terms = document.getElementById('termsCheck');
       if (!terms.checked) {
         terms.style.outline = '2px solid #e74c3c';
